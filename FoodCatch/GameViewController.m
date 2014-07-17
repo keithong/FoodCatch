@@ -10,11 +10,14 @@
 
 @interface GameViewController ()
 @property (retain, nonatomic) NSTimer *foodTimer;
+@property (retain, nonatomic) NSTimer *collisionTimer;
 @property (retain, nonatomic) UIView *basket;
 @property (retain, nonatomic) UIView *food;
 @property (retain, nonatomic) UIDynamicAnimator *animator;
 @property (retain, nonatomic) UIGravityBehavior *gravity;
 @property (retain, nonatomic) UILongPressGestureRecognizer *basketMover;
+@property (retain, nonatomic) CALayer *basketLayer;
+@property (retain, nonatomic) CALayer *foodLayer;
 
 @property (nonatomic) int screenHeight;
 @property (nonatomic) int screenWidth;
@@ -46,7 +49,7 @@
     
    
     self.foodTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(createFood) userInfo:nil repeats:YES];
-//    [self createFood];
+    self.collisionTimer = [NSTimer scheduledTimerWithTimeInterval:.1 target:self selector:@selector(isColliding) userInfo:nil repeats:YES];
     // Do any additional setup after loading the view.
 }
 
@@ -57,13 +60,15 @@
 }
 
 - (void)gameElements
-{    self.screenWidth = [UIScreen mainScreen].bounds.size.width;
+{
+    self.screenWidth = [UIScreen mainScreen].bounds.size.width;
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     self.basketWidth = 60;
     self.basketHeight= 20;
     self.foodWidth = 15;
     self.foodHeight = 15;
-    
+    self.basketLayer = self.basket.layer.presentationLayer;
+    self.foodLayer = self.food.layer.presentationLayer;
     self.animator = [[UIDynamicAnimator alloc]initWithReferenceView:self.view];
 }
 
@@ -78,7 +83,6 @@
     self.basket.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.basket];
     self.basketOriginalXPosition = self.basket.frame.origin.x;
-  
 }
 
 - (void)createFood
@@ -87,20 +91,26 @@
     self.food = [[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, self.foodWidth, self.foodHeight)];
     self.food.backgroundColor = [UIColor brownColor];
     [self.view addSubview:self.food];
-
     [self makeFoodFall];
 }
 
+//- (void)makeFoodFall
+//{
+//    self.gravity = [[UIGravityBehavior alloc]initWithItems:@[self.food]];
+//    [self.animator addBehavior:self.gravity];
+//
+//}
+
 - (void)makeFoodFall
 {
-    self.gravity = [[UIGravityBehavior alloc]initWithItems:@[self.food]];
-    [self.animator addBehavior:self.gravity];
+    [UIView animateWithDuration:.5 animations:^{
+        self.food.frame = CGRectMake(self.foodRandomPosition, self.screenHeight, self.foodWidth, self.foodHeight);
+    }];
 }
 
 - (void)moveBasket:(UILongPressGestureRecognizer *)gesture
 {
     CGPoint screenPoint = [gesture locationInView:self.view];
-    
     if(screenPoint.x < self.screenWidth/2) {
         if(self.basketOriginalXPosition != 0){
             self.basket.frame = CGRectMake(self.basketOriginalXPosition -= 5, self.screenHeight - self.basketHeight, self.basketWidth, self.basketHeight);
@@ -117,6 +127,13 @@
     self.basketMover = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(moveBasket:)];
     self.basketMover.minimumPressDuration = .1;
     [self.view addGestureRecognizer:self.basketMover];
+}
+
+- (void)isColliding
+{
+    if(CGRectIntersectsRect(self.food.frame, self.basket.frame)){
+        NSLog(@"Collision!");
+    }
 }
 
 
