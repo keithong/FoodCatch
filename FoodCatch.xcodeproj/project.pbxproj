@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F0D47FAB197780AA00BDD80C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAA197780AA00BDD80C /* Foundation.framework */; };
+		F0D47FAD197780AA00BDD80C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAC197780AA00BDD80C /* CoreGraphics.framework */; };
+		F0D47FAF197780AA00BDD80C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAE197780AA00BDD80C /* UIKit.framework */; };
+		F0D47FB5197780AA00BDD80C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0D47FB3197780AA00BDD80C /* InfoPlist.strings */; };
+		F0D47FB7197780AA00BDD80C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D47FB6197780AA00BDD80C /* main.m */; };
+		F0D47FBB197780AA00BDD80C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D47FBA197780AA00BDD80C /* AppDelegate.m */; };
+		F0D47FBD197780AA00BDD80C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F0D47FBC197780AA00BDD80C /* Images.xcassets */; };
+		F0D47FC4197780AA00BDD80C /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FC3197780AA00BDD80C /* XCTest.framework */; };
+		F0D47FC5197780AB00BDD80C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAA197780AA00BDD80C /* Foundation.framework */; };
+		F0D47FC6197780AB00BDD80C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAE197780AA00BDD80C /* UIKit.framework */; };
+		F0D47FCE197780AB00BDD80C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0D47FCC197780AB00BDD80C /* InfoPlist.strings */; };
+		F0D47FD0197780AB00BDD80C /* FoodCatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D47FCF197780AB00BDD80C /* FoodCatchTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F0D47FC7197780AB00BDD80C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F0D47F9F197780AA00BDD80C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F0D47FA6197780AA00BDD80C;
+			remoteInfo = FoodCatch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F0D47FA7197780AA00BDD80C /* FoodCatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodCatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0D47FAA197780AA00BDD80C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F0D47FAC197780AA00BDD80C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F0D47FAE197780AA00BDD80C /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F0D47FB2197780AA00BDD80C /* FoodCatch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodCatch-Info.plist"; sourceTree = "<group>"; };
+		F0D47FB4197780AA00BDD80C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F0D47FB6197780AA00BDD80C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F0D47FB8197780AA00BDD80C /* FoodCatch-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FoodCatch-Prefix.pch"; sourceTree = "<group>"; };
+		F0D47FB9197780AA00BDD80C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		F0D47FBA197780AA00BDD80C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		F0D47FBC197780AA00BDD80C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F0D47FC2197780AA00BDD80C /* FoodCatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FoodCatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F0D47FC3197780AA00BDD80C /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		F0D47FCB197780AB00BDD80C /* FoodCatchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodCatchTests-Info.plist"; sourceTree = "<group>"; };
+		F0D47FCD197780AB00BDD80C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F0D47FCF197780AB00BDD80C /* FoodCatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodCatchTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F0D47FA4197780AA00BDD80C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0D47FAD197780AA00BDD80C /* CoreGraphics.framework in Frameworks */,
+				F0D47FAF197780AA00BDD80C /* UIKit.framework in Frameworks */,
+				F0D47FAB197780AA00BDD80C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0D47FBF197780AA00BDD80C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0D47FC4197780AA00BDD80C /* XCTest.framework in Frameworks */,
+				F0D47FC6197780AB00BDD80C /* UIKit.framework in Frameworks */,
+				F0D47FC5197780AB00BDD80C /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F0D47F9E197780AA00BDD80C = {
+			isa = PBXGroup;
+			children = (
+				F0D47FB0197780AA00BDD80C /* FoodCatch */,
+				F0D47FC9197780AB00BDD80C /* FoodCatchTests */,
+				F0D47FA9197780AA00BDD80C /* Frameworks */,
+				F0D47FA8197780AA00BDD80C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F0D47FA8197780AA00BDD80C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F0D47FA7197780AA00BDD80C /* FoodCatch.app */,
+				F0D47FC2197780AA00BDD80C /* FoodCatchTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F0D47FA9197780AA00BDD80C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F0D47FAA197780AA00BDD80C /* Foundation.framework */,
+				F0D47FAC197780AA00BDD80C /* CoreGraphics.framework */,
+				F0D47FAE197780AA00BDD80C /* UIKit.framework */,
+				F0D47FC3197780AA00BDD80C /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F0D47FB0197780AA00BDD80C /* FoodCatch */ = {
+			isa = PBXGroup;
+			children = (
+				F0D47FB9197780AA00BDD80C /* AppDelegate.h */,
+				F0D47FBA197780AA00BDD80C /* AppDelegate.m */,
+				F0D47FBC197780AA00BDD80C /* Images.xcassets */,
+				F0D47FB1197780AA00BDD80C /* Supporting Files */,
+			);
+			path = FoodCatch;
+			sourceTree = "<group>";
+		};
+		F0D47FB1197780AA00BDD80C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0D47FB2197780AA00BDD80C /* FoodCatch-Info.plist */,
+				F0D47FB3197780AA00BDD80C /* InfoPlist.strings */,
+				F0D47FB6197780AA00BDD80C /* main.m */,
+				F0D47FB8197780AA00BDD80C /* FoodCatch-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0D47FC9197780AB00BDD80C /* FoodCatchTests */ = {
+			isa = PBXGroup;
+			children = (
+				F0D47FCF197780AB00BDD80C /* FoodCatchTests.m */,
+				F0D47FCA197780AB00BDD80C /* Supporting Files */,
+			);
+			path = FoodCatchTests;
+			sourceTree = "<group>";
+		};
+		F0D47FCA197780AB00BDD80C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F0D47FCB197780AB00BDD80C /* FoodCatchTests-Info.plist */,
+				F0D47FCC197780AB00BDD80C /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F0D47FA6197780AA00BDD80C /* FoodCatch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0D47FD3197780AB00BDD80C /* Build configuration list for PBXNativeTarget "FoodCatch" */;
+			buildPhases = (
+				F0D47FA3197780AA00BDD80C /* Sources */,
+				F0D47FA4197780AA00BDD80C /* Frameworks */,
+				F0D47FA5197780AA00BDD80C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FoodCatch;
+			productName = FoodCatch;
+			productReference = F0D47FA7197780AA00BDD80C /* FoodCatch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F0D47FC1197780AA00BDD80C /* FoodCatchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F0D47FD6197780AB00BDD80C /* Build configuration list for PBXNativeTarget "FoodCatchTests" */;
+			buildPhases = (
+				F0D47FBE197780AA00BDD80C /* Sources */,
+				F0D47FBF197780AA00BDD80C /* Frameworks */,
+				F0D47FC0197780AA00BDD80C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F0D47FC8197780AB00BDD80C /* PBXTargetDependency */,
+			);
+			name = FoodCatchTests;
+			productName = FoodCatchTests;
+			productReference = F0D47FC2197780AA00BDD80C /* FoodCatchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F0D47F9F197780AA00BDD80C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Keith Samson";
+				TargetAttributes = {
+					F0D47FC1197780AA00BDD80C = {
+						TestTargetID = F0D47FA6197780AA00BDD80C;
+					};
+				};
+			};
+			buildConfigurationList = F0D47FA2197780AA00BDD80C /* Build configuration list for PBXProject "FoodCatch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F0D47F9E197780AA00BDD80C;
+			productRefGroup = F0D47FA8197780AA00BDD80C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F0D47FA6197780AA00BDD80C /* FoodCatch */,
+				F0D47FC1197780AA00BDD80C /* FoodCatchTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F0D47FA5197780AA00BDD80C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0D47FB5197780AA00BDD80C /* InfoPlist.strings in Resources */,
+				F0D47FBD197780AA00BDD80C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0D47FC0197780AA00BDD80C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0D47FCE197780AB00BDD80C /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F0D47FA3197780AA00BDD80C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0D47FBB197780AA00BDD80C /* AppDelegate.m in Sources */,
+				F0D47FB7197780AA00BDD80C /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F0D47FBE197780AA00BDD80C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F0D47FD0197780AB00BDD80C /* FoodCatchTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F0D47FC8197780AB00BDD80C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F0D47FA6197780AA00BDD80C /* FoodCatch */;
+			targetProxy = F0D47FC7197780AB00BDD80C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F0D47FB3197780AA00BDD80C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0D47FB4197780AA00BDD80C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F0D47FCC197780AB00BDD80C /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F0D47FCD197780AB00BDD80C /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F0D47FD1197780AB00BDD80C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		F0D47FD2197780AB00BDD80C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F0D47FD4197780AB00BDD80C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FoodCatch/FoodCatch-Prefix.pch";
+				INFOPLIST_FILE = "FoodCatch/FoodCatch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F0D47FD5197780AB00BDD80C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FoodCatch/FoodCatch-Prefix.pch";
+				INFOPLIST_FILE = "FoodCatch/FoodCatch-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		F0D47FD7197780AB00BDD80C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FoodCatch.app/FoodCatch";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FoodCatch/FoodCatch-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FoodCatchTests/FoodCatchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		F0D47FD8197780AB00BDD80C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FoodCatch.app/FoodCatch";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FoodCatch/FoodCatch-Prefix.pch";
+				INFOPLIST_FILE = "FoodCatchTests/FoodCatchTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F0D47FA2197780AA00BDD80C /* Build configuration list for PBXProject "FoodCatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0D47FD1197780AB00BDD80C /* Debug */,
+				F0D47FD2197780AB00BDD80C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F0D47FD3197780AB00BDD80C /* Build configuration list for PBXNativeTarget "FoodCatch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0D47FD4197780AB00BDD80C /* Debug */,
+				F0D47FD5197780AB00BDD80C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		F0D47FD6197780AB00BDD80C /* Build configuration list for PBXNativeTarget "FoodCatchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F0D47FD7197780AB00BDD80C /* Debug */,
+				F0D47FD8197780AB00BDD80C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F0D47F9F197780AA00BDD80C /* Project object */;
+}
