@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F04A76441977841B00BD7058 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A76421977841B00BD7058 /* MainMenuViewController.m */; };
+		F04A76451977841B00BD7058 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A76431977841B00BD7058 /* MainMenuViewController.xib */; };
+		F04A764C197784B000BD7058 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A764A197784B000BD7058 /* AboutViewController.m */; };
+		F04A764D197784B000BD7058 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A764B197784B000BD7058 /* AboutViewController.xib */; };
 		F0D47FAB197780AA00BDD80C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAA197780AA00BDD80C /* Foundation.framework */; };
 		F0D47FAD197780AA00BDD80C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAC197780AA00BDD80C /* CoreGraphics.framework */; };
 		F0D47FAF197780AA00BDD80C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAE197780AA00BDD80C /* UIKit.framework */; };
@@ -19,6 +23,8 @@
 		F0D47FC6197780AB00BDD80C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAE197780AA00BDD80C /* UIKit.framework */; };
 		F0D47FCE197780AB00BDD80C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0D47FCC197780AB00BDD80C /* InfoPlist.strings */; };
 		F0D47FD0197780AB00BDD80C /* FoodCatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D47FCF197780AB00BDD80C /* FoodCatchTests.m */; };
+		F0D47FDC197782F400BDD80C /* HighScoreViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D47FDA197782F400BDD80C /* HighScoreViewController.m */; };
+		F0D47FDD197782F400BDD80C /* HighScoreViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0D47FDB197782F400BDD80C /* HighScoreViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +38,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F04A76411977841B00BD7058 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		F04A76421977841B00BD7058 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		F04A76431977841B00BD7058 /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
+		F04A7649197784B000BD7058 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = ../AboutViewController.h; sourceTree = "<group>"; };
+		F04A764A197784B000BD7058 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = ../AboutViewController.m; sourceTree = "<group>"; };
+		F04A764B197784B000BD7058 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutViewController.xib; path = ../AboutViewController.xib; sourceTree = "<group>"; };
 		F0D47FA7197780AA00BDD80C /* FoodCatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodCatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0D47FAA197780AA00BDD80C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0D47FAC197780AA00BDD80C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +60,9 @@
 		F0D47FCB197780AB00BDD80C /* FoodCatchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodCatchTests-Info.plist"; sourceTree = "<group>"; };
 		F0D47FCD197780AB00BDD80C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F0D47FCF197780AB00BDD80C /* FoodCatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodCatchTests.m; sourceTree = "<group>"; };
+		F0D47FD9197782F400BDD80C /* HighScoreViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighScoreViewController.h; path = ../HighScoreViewController.h; sourceTree = "<group>"; };
+		F0D47FDA197782F400BDD80C /* HighScoreViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighScoreViewController.m; path = ../HighScoreViewController.m; sourceTree = "<group>"; };
+		F0D47FDB197782F400BDD80C /* HighScoreViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HighScoreViewController.xib; path = ../HighScoreViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +122,18 @@
 		F0D47FB0197780AA00BDD80C /* FoodCatch */ = {
 			isa = PBXGroup;
 			children = (
+				F04A7649197784B000BD7058 /* AboutViewController.h */,
+				F04A764A197784B000BD7058 /* AboutViewController.m */,
+				F04A764B197784B000BD7058 /* AboutViewController.xib */,
 				F0D47FB9197780AA00BDD80C /* AppDelegate.h */,
 				F0D47FBA197780AA00BDD80C /* AppDelegate.m */,
+				F0D47FD9197782F400BDD80C /* HighScoreViewController.h */,
+				F0D47FDA197782F400BDD80C /* HighScoreViewController.m */,
+				F0D47FDB197782F400BDD80C /* HighScoreViewController.xib */,
 				F0D47FBC197780AA00BDD80C /* Images.xcassets */,
+				F04A76411977841B00BD7058 /* MainMenuViewController.h */,
+				F04A76421977841B00BD7058 /* MainMenuViewController.m */,
+				F04A76431977841B00BD7058 /* MainMenuViewController.xib */,
 				F0D47FB1197780AA00BDD80C /* Supporting Files */,
 			);
 			path = FoodCatch;
@@ -219,8 +243,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F04A76451977841B00BD7058 /* MainMenuViewController.xib in Resources */,
 				F0D47FB5197780AA00BDD80C /* InfoPlist.strings in Resources */,
 				F0D47FBD197780AA00BDD80C /* Images.xcassets in Resources */,
+				F0D47FDD197782F400BDD80C /* HighScoreViewController.xib in Resources */,
+				F04A764D197784B000BD7058 /* AboutViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,8 +266,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F04A76441977841B00BD7058 /* MainMenuViewController.m in Sources */,
+				F04A764C197784B000BD7058 /* AboutViewController.m in Sources */,
 				F0D47FBB197780AA00BDD80C /* AppDelegate.m in Sources */,
 				F0D47FB7197780AA00BDD80C /* main.m in Sources */,
+				F0D47FDC197782F400BDD80C /* HighScoreViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -437,6 +467,7 @@
 				F0D47FD5197780AB00BDD80C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F0D47FD6197780AB00BDD80C /* Build configuration list for PBXNativeTarget "FoodCatchTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +476,7 @@
 				F0D47FD8197780AB00BDD80C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
