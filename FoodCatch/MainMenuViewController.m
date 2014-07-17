@@ -9,6 +9,7 @@
 #import "MainMenuViewController.h"
 #import "HighScoreViewController.h"
 #import "AboutViewController.h"
+#import "GameViewController.h"
 
 @interface MainMenuViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *btnAbout;
@@ -18,6 +19,11 @@
 @end
 
 @implementation MainMenuViewController
+- (IBAction)goToPlay:(id)sender {
+    GameViewController *gameVC = [[GameViewController alloc]init];
+    [self.navigationController pushViewController:gameVC animated:NO];
+    
+}
 - (IBAction)goToAbout:(id)sender {
     AboutViewController *aboutVC = [[AboutViewController alloc]init];
     [self.navigationController pushViewController:aboutVC animated:NO];
