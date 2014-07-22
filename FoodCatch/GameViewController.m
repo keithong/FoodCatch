@@ -6,6 +6,7 @@
 //  Copyright (c) 2014 Keith Samson. All rights reserved.
 //
 #import "GameViewController.h"
+#import "GameOverViewController.h"
 
 @interface GameViewController ()
 @property (retain, nonatomic) NSTimer *foodTimer;
@@ -63,9 +64,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self gameElements];
+//    [self gameElements];
    
     // Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self gameElements];
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,6 +126,7 @@
     
     self.labelHeight = 80;
     self.labelWidth = 90;
+    
 }
 
 - (void)gameElements
@@ -216,6 +224,8 @@
 
 - (void)isFoodFloorColliding
 {
+    [self gameOver];
+    
     // If the presentation layer of the food and the floor collides, the player looses a life
     if(CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.floor.layer presentationLayer] frame])){
         self.life -=1;
@@ -223,7 +233,34 @@
         
         [self.food removeFromSuperview];
         [self.food.layer removeAllAnimations];
+        
     }
+}
+
+- (void)gameOver
+{
+    if (self.life == 0){
+        [self destroyGameElements];
+        GameOverViewController *gameOverVC = [[GameOverViewController alloc]init];
+        [self.navigationController pushViewController:gameOverVC animated:NO];
+        [gameOverVC release];
+    }
+}
+
+- (void)destroyGameElements
+{
+    [self.foodTimer invalidate];
+    [self.foodBasketCollisionTimer invalidate];
+    [self.foodFloorCollisionTimer invalidate];
+    [self.view removeFromSuperview];
+    [self.basket removeFromSuperview];
+    [self.food removeFromSuperview];
+    [self.floor removeFromSuperview];
+    [self.lifeLabel removeFromSuperview];
+    [self.scoreLabel removeFromSuperview];
+    self.life = 3;
+    self.score = 0;
+    
 }
 
 - (void)dealloc

@@ -12,6 +12,8 @@
 		F04A764C197784B000BD7058 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A764A197784B000BD7058 /* AboutViewController.m */; };
 		F04A764D197784B000BD7058 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A764B197784B000BD7058 /* AboutViewController.xib */; };
 		F04A7650197786D900BD7058 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A764F197786D900BD7058 /* GameViewController.m */; };
+		F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C923C8197E407500CCC3CA /* GameOverViewController.m */; };
+		F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C923C9197E407500CCC3CA /* GameOverViewController.xib */; };
 		F0D47FAB197780AA00BDD80C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAA197780AA00BDD80C /* Foundation.framework */; };
 		F0D47FAD197780AA00BDD80C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAC197780AA00BDD80C /* CoreGraphics.framework */; };
 		F0D47FAF197780AA00BDD80C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAE197780AA00BDD80C /* UIKit.framework */; };
@@ -47,6 +49,9 @@
 		F04A764B197784B000BD7058 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AboutViewController.xib; path = ../AboutViewController.xib; sourceTree = "<group>"; };
 		F04A764E197786D900BD7058 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
 		F04A764F197786D900BD7058 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		F0C923C7197E407500CCC3CA /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
+		F0C923C8197E407500CCC3CA /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
+		F0C923C9197E407500CCC3CA /* GameOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
 		F0D47FA7197780AA00BDD80C /* FoodCatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodCatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0D47FAA197780AA00BDD80C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0D47FAC197780AA00BDD80C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -130,6 +135,9 @@
 				F04A764B197784B000BD7058 /* AboutViewController.xib */,
 				F0D47FB9197780AA00BDD80C /* AppDelegate.h */,
 				F0D47FBA197780AA00BDD80C /* AppDelegate.m */,
+				F0C923C7197E407500CCC3CA /* GameOverViewController.h */,
+				F0C923C8197E407500CCC3CA /* GameOverViewController.m */,
+				F0C923C9197E407500CCC3CA /* GameOverViewController.xib */,
 				F04A764E197786D900BD7058 /* GameViewController.h */,
 				F04A764F197786D900BD7058 /* GameViewController.m */,
 				F0D47FD9197782F400BDD80C /* HighScoreViewController.h */,
@@ -248,6 +256,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */,
 				F04A76451977841B00BD7058 /* MainMenuViewController.xib in Resources */,
 				F0D47FB5197780AA00BDD80C /* InfoPlist.strings in Resources */,
 				F0D47FBD197780AA00BDD80C /* Images.xcassets in Resources */,
@@ -275,6 +284,7 @@
 				F04A764C197784B000BD7058 /* AboutViewController.m in Sources */,
 				F0D47FBB197780AA00BDD80C /* AppDelegate.m in Sources */,
 				F0D47FB7197780AA00BDD80C /* main.m in Sources */,
+				F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */,
 				F04A7650197786D900BD7058 /* GameViewController.m in Sources */,
 				F0D47FDC197782F400BDD80C /* HighScoreViewController.m in Sources */,
 			);
