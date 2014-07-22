@@ -13,17 +13,25 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
-    
-    MainMenuViewController *mainMenuVC = [[MainMenuViewController alloc]init];
-    
-    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:mainMenuVC];
-    [navController setNavigationBarHidden:YES];
-    self.window.rootViewController = navController;
-    self.window.backgroundColor = [UIColor whiteColor];
+    if (!self.window.rootViewController)
+    {
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        // Override point for customization after application launch.
+        
+        MainMenuViewController *mainMenuVC = [[MainMenuViewController alloc]init];
+        UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:mainMenuVC];
+        [navController setNavigationBarHidden:YES];
+        self.window.rootViewController = navController;
+        self.window.backgroundColor = [UIColor whiteColor];
+        
+        [mainMenuVC release];
+        [navController release];
+       
+        
+    }
     [self.window makeKeyAndVisible];
     return YES;
+
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

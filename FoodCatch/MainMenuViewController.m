@@ -12,13 +12,14 @@
 #import "GameViewController.h"
 
 @interface MainMenuViewController ()
-@property (weak, nonatomic) IBOutlet UIButton *btnAbout;
-@property (weak, nonatomic) IBOutlet UIButton *btnHighScore;
-@property (weak, nonatomic) IBOutlet UIButton *btnPlay;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *btnAbout;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *btnHighScore;
+@property (unsafe_unretained, nonatomic) IBOutlet UIButton *btnPlay;
 
 @end
 
 @implementation MainMenuViewController
+
 - (IBAction)goToPlay:(id)sender {
     GameViewController *gameVC = [[GameViewController alloc]init];
     [self.navigationController pushViewController:gameVC animated:NO];
@@ -62,4 +63,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)dealloc
+{
+    [super dealloc];
+    [self.btnAbout release];
+    [self.btnHighScore release];
+    [self.btnPlay release];
+}
 @end

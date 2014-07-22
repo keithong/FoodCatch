@@ -9,7 +9,7 @@
 #import "AboutViewController.h"
 
 @interface AboutViewController ()
-@property (weak, nonatomic) IBOutlet UIWebView *aboutWebView;
+@property (unsafe_unretained, nonatomic) IBOutlet UIWebView *aboutWebView;
 
 @end
 
@@ -41,6 +41,7 @@
 -(void)connectToAds
 {
     NSString *requestString = @"http://ads.cyscorpions.com/en/trainingcenter/";
+    
     NSMutableURLRequest *(^requestBlock)(NSString *) = ^(NSString *string)
     {
         NSURL *url = [NSURL URLWithString:requestString];
@@ -64,9 +65,16 @@
                                                                delegate:self
                                                                cancelButtonTitle:@"OK"
                                                                otherButtonTitles:nil];
-                               [errorConnecting show]; }
-     ];
-    
+                               [errorConnecting show];
+                               [errorConnecting release];
+                           }];
+
+}
+
+- (void)dealloc
+{
+    [super dealloc];
+    [self.aboutWebView release];
 }
 
 
