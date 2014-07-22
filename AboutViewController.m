@@ -68,7 +68,6 @@
                                [errorConnecting show];
                                [errorConnecting release];
                            }];
-
 }
 
 - (void)dealloc

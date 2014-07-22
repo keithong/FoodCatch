@@ -224,6 +224,7 @@
 
 - (void)isFoodFloorColliding
 {
+    // Check if life is 0
     [self gameOver];
     
     // If the presentation layer of the food and the floor collides, the player looses a life

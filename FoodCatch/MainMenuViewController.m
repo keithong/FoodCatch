@@ -7,7 +7,6 @@
 //
 
 #import "MainMenuViewController.h"
-#import "HighScoreViewController.h"
 #import "AboutViewController.h"
 #import "GameViewController.h"
 
@@ -29,11 +28,7 @@
     AboutViewController *aboutVC = [[AboutViewController alloc]init];
     [self.navigationController pushViewController:aboutVC animated:NO];
 }
-- (IBAction)goToHighScore:(id)sender {
-    
-    HighScoreViewController *highScoreVC = [[HighScoreViewController alloc]init];
-    [self.navigationController pushViewController:highScoreVC animated:NO];
-}
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {

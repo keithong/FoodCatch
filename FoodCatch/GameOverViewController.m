@@ -20,7 +20,6 @@
     [self.navigationController popToRootViewControllerAnimated:NO];
 }
 - (IBAction)goToPlay:(id)sender {
-//    NSArray *viewControllers = [self.navigationController viewControllers];
     [self.navigationController popToViewController:[self.navigationController viewControllers][1] animated:NO];
 }
 
@@ -46,8 +45,8 @@
 }
 
 - (void)dealloc {
-    [_btnPlayAgain release];
-    [_btnMainMenu release];
+    [self.btnPlayAgain release];
+    [self.btnMainMenu release];
     [super dealloc];
 }
 @end
