@@ -76,6 +76,9 @@
 
 - (void)gameMeasures
 {
+    // Create a method to store your "magic numbers"
+    // And some more game measurements
+    
     self.screenWidth = [UIScreen mainScreen].bounds.size.width;
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     
@@ -116,11 +119,11 @@
     
     self.labelHeight = 80;
     self.labelWidth = 90;
-
 }
 
 - (void)gameElements
 {
+    // Call your game elements here
     [self gameMeasures];
     [self createFloor];
     [self createBasket];
@@ -178,12 +181,14 @@
 - (void)moveBasket:(UILongPressGestureRecognizer *)gesture
 {
     CGPoint screenPoint = [gesture locationInView:self.view];
-    if(screenPoint.x < self.screenWidth/2) {
-        if(self.basketOriginalXPosition != 0){
+    if(screenPoint.x < self.screenWidth/2) { // If the user taps on the left side of the screen
+        if(self.basketOriginalXPosition != 0){ // Check if the basket is already at the left screen bound
             self.basket.frame = CGRectMake(self.basketOriginalXPosition -= self.basketMoveInterval, self.basketYPosition, self.basketWidth, self.basketHeight);
         }
         return;
     }
+    
+    // The exact opposite of the code above
     if(self.basketOriginalXPosition != self.screenWidth - self.basketWidth){
         self.basket.frame = CGRectMake(self.basketOriginalXPosition += self.basketMoveInterval, self.basketYPosition, self.basketWidth, self.basketHeight);
     }
@@ -198,19 +203,24 @@
 
 - (void)isFoodBasketColliding
 {
+    // If the presentation layer of the food and the basket collides, the player scores
     if(CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.basket.layer presentationLayer]frame])){
         self.score += 1;
         [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.score]];
-        [self.food.layer removeAllAnimations];
-        [self.food removeFromSuperview];
+        
+        [self.food.layer removeAllAnimations];  // Stop the food from falling in the ground
+        [self.food removeFromSuperview];        // Remove the food from the screen
+        
     }
 }
 
 - (void)isFoodFloorColliding
 {
+    // If the presentation layer of the food and the floor collides, the player looses a life
     if(CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.floor.layer presentationLayer] frame])){
         self.life -=1;
         [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", self.life]];
+        
         [self.food removeFromSuperview];
         [self.food.layer removeAllAnimations];
     }
