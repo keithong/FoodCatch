@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F024B495197F440C001C9FD9 /* HighScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F024B494197F440C001C9FD9 /* HighScoresViewController.m */; };
+		F024B498197F5062001C9FD9 /* ScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F024B497197F5062001C9FD9 /* ScoreCell.m */; };
+		F024B49A197F50A5001C9FD9 /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F024B499197F50A4001C9FD9 /* ScoreCell.xib */; };
 		F04A76441977841B00BD7058 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A76421977841B00BD7058 /* MainMenuViewController.m */; };
 		F04A76451977841B00BD7058 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A76431977841B00BD7058 /* MainMenuViewController.xib */; };
 		F04A764C197784B000BD7058 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A764A197784B000BD7058 /* AboutViewController.m */; };
@@ -26,6 +29,8 @@
 		F0D47FC6197780AB00BDD80C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAE197780AA00BDD80C /* UIKit.framework */; };
 		F0D47FCE197780AB00BDD80C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0D47FCC197780AB00BDD80C /* InfoPlist.strings */; };
 		F0D47FD0197780AB00BDD80C /* FoodCatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D47FCF197780AB00BDD80C /* FoodCatchTests.m */; };
+		F0DD9249197E5C1600CC1652 /* HighScores.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0DD9248197E5C1600CC1652 /* HighScores.plist */; };
+		F0DD924C197E5D7C00CC1652 /* ScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DD924B197E5D7C00CC1652 /* ScoreModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,6 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F024B493197F440C001C9FD9 /* HighScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HighScoresViewController.h; path = ../HighScoresViewController.h; sourceTree = "<group>"; };
+		F024B494197F440C001C9FD9 /* HighScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HighScoresViewController.m; path = ../HighScoresViewController.m; sourceTree = "<group>"; };
+		F024B496197F5062001C9FD9 /* ScoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCell.h; sourceTree = "<group>"; };
+		F024B497197F5062001C9FD9 /* ScoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCell.m; sourceTree = "<group>"; };
+		F024B499197F50A4001C9FD9 /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreCell.xib; sourceTree = "<group>"; };
 		F04A76411977841B00BD7058 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		F04A76421977841B00BD7058 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		F04A76431977841B00BD7058 /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
@@ -66,6 +76,9 @@
 		F0D47FCB197780AB00BDD80C /* FoodCatchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodCatchTests-Info.plist"; sourceTree = "<group>"; };
 		F0D47FCD197780AB00BDD80C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F0D47FCF197780AB00BDD80C /* FoodCatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodCatchTests.m; sourceTree = "<group>"; };
+		F0DD9248197E5C1600CC1652 /* HighScores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HighScores.plist; sourceTree = "<group>"; };
+		F0DD924A197E5D7C00CC1652 /* ScoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreModel.h; sourceTree = "<group>"; };
+		F0DD924B197E5D7C00CC1652 /* ScoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,10 +148,18 @@
 				F0C923C9197E407500CCC3CA /* GameOverViewController.xib */,
 				F04A764E197786D900BD7058 /* GameViewController.h */,
 				F04A764F197786D900BD7058 /* GameViewController.m */,
+				F0DD9248197E5C1600CC1652 /* HighScores.plist */,
+				F024B493197F440C001C9FD9 /* HighScoresViewController.h */,
+				F024B494197F440C001C9FD9 /* HighScoresViewController.m */,
 				F0D47FBC197780AA00BDD80C /* Images.xcassets */,
 				F04A76411977841B00BD7058 /* MainMenuViewController.h */,
 				F04A76421977841B00BD7058 /* MainMenuViewController.m */,
 				F04A76431977841B00BD7058 /* MainMenuViewController.xib */,
+				F024B496197F5062001C9FD9 /* ScoreCell.h */,
+				F024B499197F50A4001C9FD9 /* ScoreCell.xib */,
+				F024B497197F5062001C9FD9 /* ScoreCell.m */,
+				F0DD924A197E5D7C00CC1652 /* ScoreModel.h */,
+				F0DD924B197E5D7C00CC1652 /* ScoreModel.m */,
 				F0D47FB1197780AA00BDD80C /* Supporting Files */,
 			);
 			path = FoodCatch;
@@ -248,9 +269,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F024B49A197F50A5001C9FD9 /* ScoreCell.xib in Resources */,
 				F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */,
 				F04A76451977841B00BD7058 /* MainMenuViewController.xib in Resources */,
 				F0D47FB5197780AA00BDD80C /* InfoPlist.strings in Resources */,
+				F0DD9249197E5C1600CC1652 /* HighScores.plist in Resources */,
 				F0D47FBD197780AA00BDD80C /* Images.xcassets in Resources */,
 				F04A764D197784B000BD7058 /* AboutViewController.xib in Resources */,
 			);
@@ -274,6 +297,9 @@
 				F04A76441977841B00BD7058 /* MainMenuViewController.m in Sources */,
 				F04A764C197784B000BD7058 /* AboutViewController.m in Sources */,
 				F0D47FBB197780AA00BDD80C /* AppDelegate.m in Sources */,
+				F024B495197F440C001C9FD9 /* HighScoresViewController.m in Sources */,
+				F024B498197F5062001C9FD9 /* ScoreCell.m in Sources */,
+				F0DD924C197E5D7C00CC1652 /* ScoreModel.m in Sources */,
 				F0D47FB7197780AA00BDD80C /* main.m in Sources */,
 				F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */,
 				F04A7650197786D900BD7058 /* GameViewController.m in Sources */,
