@@ -19,7 +19,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -28,19 +27,17 @@
 {
     [super viewDidLoad];
     [self connectToAds];
-    // Do any additional setup after loading the view from its nib.
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-     [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 -(void)connectToAds
@@ -52,7 +49,6 @@
         NSURL *url = [NSURL URLWithString:requestString];
         NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
         return request;
-        
     };
     
     [NSURLConnection sendAsynchronousRequest:requestBlock(requestString)
@@ -64,6 +60,7 @@
                                    return;
                                }
                                
+                               // Show a error pop-up message if there's no internet connection
                                UIAlertView *errorConnecting = [[UIAlertView alloc]
                                                                initWithTitle:@"Error"
                                                                message:@"Failed connect. Please try again."
@@ -71,16 +68,15 @@
                                                                cancelButtonTitle:@"OK"
                                                                otherButtonTitles:nil];
                                [errorConnecting show];
+                               [errorConnecting dealloc];
                                [errorConnecting release];
                            }];
 }
 
 - (void)dealloc
 {
-    [super dealloc];
     [self.aboutWebView release];
+    [super dealloc];
 }
-
-
 
 @end

@@ -9,5 +9,4 @@
 #import <UIKit/UIKit.h>
 
 @interface HighScoresViewController : UITableViewController <UITableViewDataSource>
-
 @end

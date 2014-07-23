@@ -34,7 +34,6 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -44,7 +43,6 @@
     [super viewDidLoad];
     [self loadScoreList];
     [self viewScoreMessage];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewScoreMessage
@@ -68,19 +66,13 @@
 - (void)writeScore
 {
     self.newScore = [[NSMutableDictionary alloc]init];
-    NSLog(@"%d", self.scoreToPass);
     NSString *scoreToString = [NSString stringWithFormat:@"%d",self.scoreToPass];
     
     [self.newScore setObject:[self.scoreMessage textFieldAtIndex:0].text forKey:@"playerName"];
     [self.newScore setObject:scoreToString forKey:@"playerScore"];
     
-    NSLog(@"%@", self.scoreArray);
-    NSLog(@"%@",self.newScore);
-    
     [self.scoreArray addObject:self.newScore];
-    NSLog(@"%@", self.scoreArray);
-    
-    NSLog(@"scorePath: %@", self.scorePath);
+
     [self.scoreArray writeToFile:self.scorePath atomically:YES];
 }
 
@@ -89,7 +81,6 @@
     self.scorePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     self.scorePath = [self.scorePath stringByAppendingPathComponent:@"HighScores.plist"];
     
-    // If the file doesn't exist in the Documents Folder, copy it.
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     if (![fileManager fileExistsAtPath:self.scorePath]) {
@@ -97,29 +88,23 @@
         [fileManager copyItemAtPath:sourcePath toPath:self.scorePath error:nil];
     }
     
-    NSLog(@"%@", self.scorePath);
-    
-    // Load the Property List.
     self.scoreArray = [[NSMutableArray alloc] initWithContentsOfFile:self.scorePath];
 }
 
-//- (void)loadScoreList
-//{
-//    self.scorePath = [[NSBundle mainBundle] pathForResource:@"HighScores" ofType:@"plist"];
-//    if(self.scorePath){
-//        NSLog(@"plist loaded!");
-//        self.scoreArray = [NSMutableArray arrayWithContentsOfFile:self.scorePath];
-//        return;
-//    }
-//}
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc {
+    [self.scoreMessage dealloc];
+    [self.newScore dealloc];
+    [self.scoreArray dealloc];
+    
+    [self.scoreMessage release];
+    [self.newScore release];
+    [self.scoreArray release];
     [self.btnPlayAgain release];
     [self.btnMainMenu release];
     [super dealloc];

@@ -12,6 +12,7 @@
 #import "HighScoresViewController.h"
 
 @interface MainMenuViewController ()
+
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *btnAbout;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *btnHighScore;
 @property (unsafe_unretained, nonatomic) IBOutlet UIButton *btnPlay;
@@ -23,25 +24,28 @@
 - (IBAction)goToHighScore:(id)sender {
     HighScoresViewController *highScoreVC = [[HighScoresViewController alloc]init];
     [self.navigationController pushViewController:highScoreVC animated:NO];
-
+    
+    [highScoreVC release];
 }
 
 - (IBAction)goToPlay:(id)sender {
     GameViewController *gameVC = [[GameViewController alloc]init];
     [self.navigationController pushViewController:gameVC animated:NO];
     
+    [gameVC release];
 }
+
 - (IBAction)goToAbout:(id)sender {
     AboutViewController *aboutVC = [[AboutViewController alloc]init];
     [self.navigationController pushViewController:aboutVC animated:NO];
+    
+    [aboutVC release];
 }
-
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -49,7 +53,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -62,14 +65,13 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc
 {
-    [super dealloc];
     [self.btnAbout release];
     [self.btnHighScore release];
     [self.btnPlay release];
+    [super dealloc];
 }
 @end

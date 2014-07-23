@@ -11,5 +11,4 @@
 @interface ScoreCell : UITableViewCell
 @property (retain, nonatomic) IBOutlet UILabel *playerScoreLabel;
 @property (retain, nonatomic) IBOutlet UILabel *playerNameLabel;
-
 @end

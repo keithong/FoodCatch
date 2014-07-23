@@ -11,8 +11,8 @@
 @implementation ScoreCell
 
 - (void)dealloc {
-    [_playerNameLabel release];
-    [_playerScoreLabel release];
+    [self.playerNameLabel release];
+    [self.playerScoreLabel release];
     [super dealloc];
 }
 @end

@@ -20,8 +20,8 @@
 @property (retain, nonatomic) NSMutableArray *scoreArray;
 @property (retain, nonatomic) NSMutableDictionary *cellIdentifier;
 
-
 -(id)initWithScoreModel:(ScoreModel *)scoreModel;
+
 @end
 
 
@@ -45,14 +45,14 @@
     self.playerNameForCell = scoreModel.playerName;
     self.playerScoreForCell = scoreModel.playerScore;
     return self;
-    
 }
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    if([self.scoreArray count]<10){
-    return [self.scoreArray count];
+    // I just want to view 10 recent scores.
+    if([self.scoreArray count] < 10){
+        return [self.scoreArray count];
     }
     return 10;
 }
@@ -70,19 +70,25 @@
     cell.playerNameLabel.text = highScoreVC.playerNameForCell;
     cell.playerScoreLabel.text = highScoreVC.playerScoreForCell;
     return cell;
+    
+    [highScoreVC dealloc];
+    [score dealloc];
+    
+    [highScoreVC release];
+    [score release];
 }
 
 
 -(void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-     [self.navigationController setNavigationBarHidden:NO];
+    [self.navigationController setNavigationBarHidden:NO];
 }
+
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = @"Recent Scores";
-   
     
     self.scoreCellIdentifier = [NSString stringWithFormat:@"ScoreCell"];
     
@@ -91,36 +97,34 @@
     [self.tableView registerNib:nib forCellReuseIdentifier:self.scoreCellIdentifier];
     
     [self loadScoreList];
-    
 }
 
-//-(void)loadScoreList
-//{
-//    self.scorePath = [[NSBundle mainBundle] pathForResource:@"HighScores" ofType:@"plist"];
-//    
-//    if(self.scorePath){
-//        self.scoreArray = [NSMutableArray arrayWithContentsOfFile:self.scorePath];
-//        return;
-//    }
-//
-//}
 
 -(void)loadScoreList
 {
     self.scorePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     self.scorePath = [self.scorePath stringByAppendingPathComponent:@"HighScores.plist"];
     
-    // If the file doesn't exist in the Documents Folder, copy it.
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     if (![fileManager fileExistsAtPath:self.scorePath]) {
         NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"HighScores" ofType:@"plist"];
         [fileManager copyItemAtPath:sourcePath toPath:self.scorePath error:nil];
     }
-    
-    NSLog(@"%@", self.scorePath);
-    
-    // Load the Property List.
     self.scoreArray = [[NSMutableArray alloc] initWithContentsOfFile:self.scorePath];
+}
+
+-(void)dealloc
+{
+    [self.scoreArray dealloc];
+    
+    [self.scoreArray release];
+    [self.scorePath release];
+    [self.scoreCellIdentifier release];
+    [self.playerNameForCell release];
+    [self.playerScoreForCell release];
+    [self.scoreArray release];
+    [self.cellIdentifier release];
+    [super dealloc];
 }
 @end
