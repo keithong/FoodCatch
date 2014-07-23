@@ -8,6 +8,8 @@
 #import "GameViewController.h"
 #import "GameOverViewController.h"
 
+
+
 @interface GameViewController ()
 @property (retain, nonatomic) NSTimer *foodTimer;
 @property (retain, nonatomic) NSTimer *foodFloorCollisionTimer;
@@ -43,11 +45,13 @@
 @property (nonatomic) int floorWidth;
 @property (nonatomic) int floorYPosition;
 
-@property (nonatomic) int score;
 @property (nonatomic) int life;
+@property (nonatomic) int score;
 
 @property (nonatomic) int labelHeight;
 @property (nonatomic) int labelWidth;
+
+
 
 @end
 @implementation GameViewController
@@ -241,8 +245,9 @@
 - (void)gameOver
 {
     if (self.life == 0){
-        [self destroyGameElements];
         GameOverViewController *gameOverVC = [[GameOverViewController alloc]init];
+        gameOverVC.scoreToPass = self.score;
+        [self destroyGameElements];
         [self.navigationController pushViewController:gameOverVC animated:NO];
         [gameOverVC release];
     }

@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GameOverViewController : UIViewController
-
+@property (nonatomic) int scoreToPass;
 @end

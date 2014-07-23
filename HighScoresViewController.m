@@ -73,25 +73,54 @@
 }
 
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+     [self.navigationController setNavigationBarHidden:NO];
+}
 -(void)viewDidLoad
 {
     [super viewDidLoad];
     self.title = @"Recent Scores";
-    [self.navigationController setNavigationBarHidden:NO];
+   
     
     self.scoreCellIdentifier = [NSString stringWithFormat:@"ScoreCell"];
     
     UINib *nib = [UINib nibWithNibName:self.scoreCellIdentifier bundle:nil];
     
     [self.tableView registerNib:nib forCellReuseIdentifier:self.scoreCellIdentifier];
-
     
-    self.scorePath = [[NSBundle mainBundle] pathForResource:@"HighScores" ofType:@"plist"];
+    [self loadScoreList];
     
-    if(self.scorePath){
-        self.scoreArray = [NSMutableArray arrayWithContentsOfFile:self.scorePath];
-        return;
-    }
 }
 
+//-(void)loadScoreList
+//{
+//    self.scorePath = [[NSBundle mainBundle] pathForResource:@"HighScores" ofType:@"plist"];
+//    
+//    if(self.scorePath){
+//        self.scoreArray = [NSMutableArray arrayWithContentsOfFile:self.scorePath];
+//        return;
+//    }
+//
+//}
+
+-(void)loadScoreList
+{
+    self.scorePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    self.scorePath = [self.scorePath stringByAppendingPathComponent:@"HighScores.plist"];
+    
+    // If the file doesn't exist in the Documents Folder, copy it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:self.scorePath]) {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"HighScores" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:self.scorePath error:nil];
+    }
+    
+    NSLog(@"%@", self.scorePath);
+    
+    // Load the Property List.
+    self.scoreArray = [[NSMutableArray alloc] initWithContentsOfFile:self.scorePath];
+}
 @end

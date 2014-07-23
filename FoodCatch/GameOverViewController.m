@@ -8,10 +8,17 @@
 
 #import "GameOverViewController.h"
 #import "GameViewController.h"
+#import "ScoreModel.h"
 
 @interface GameOverViewController ()
 @property (retain, nonatomic) IBOutlet UIButton *btnMainMenu;
 @property (retain, nonatomic) IBOutlet UIButton *btnPlayAgain;
+
+@property (retain, nonatomic) UIAlertView *scoreMessage;
+@property (retain, nonatomic) NSString *scorePath;
+@property (retain, nonatomic) NSMutableDictionary *newScore;
+@property (retain, nonatomic) NSMutableArray *scoreArray;
+
 
 @end
 
@@ -35,8 +42,76 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self loadScoreList];
+    [self viewScoreMessage];
     // Do any additional setup after loading the view from its nib.
 }
+
+- (void)viewScoreMessage
+{
+    self.scoreMessage =[[UIAlertView alloc ] initWithTitle:@"Game Over!"
+                                                                message:@"Enter your name"
+                                                               delegate:self
+                                                      cancelButtonTitle:nil
+                                                      otherButtonTitles: @"Done", nil];
+    self.scoreMessage.alertViewStyle = UIAlertViewStylePlainTextInput;
+
+    [self.scoreMessage show];
+    [self.scoreMessage release];
+}
+
+- (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    [self writeScore];
+}
+
+- (void)writeScore
+{
+    self.newScore = [[NSMutableDictionary alloc]init];
+    NSLog(@"%d", self.scoreToPass);
+    NSString *scoreToString = [NSString stringWithFormat:@"%d",self.scoreToPass];
+    
+    [self.newScore setObject:[self.scoreMessage textFieldAtIndex:0].text forKey:@"playerName"];
+    [self.newScore setObject:scoreToString forKey:@"playerScore"];
+    
+    NSLog(@"%@", self.scoreArray);
+    NSLog(@"%@",self.newScore);
+    
+    [self.scoreArray addObject:self.newScore];
+    NSLog(@"%@", self.scoreArray);
+    
+    NSLog(@"scorePath: %@", self.scorePath);
+    [self.scoreArray writeToFile:self.scorePath atomically:YES];
+}
+
+-(void)loadScoreList
+{
+    self.scorePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    self.scorePath = [self.scorePath stringByAppendingPathComponent:@"HighScores.plist"];
+    
+    // If the file doesn't exist in the Documents Folder, copy it.
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    
+    if (![fileManager fileExistsAtPath:self.scorePath]) {
+        NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"HighScores" ofType:@"plist"];
+        [fileManager copyItemAtPath:sourcePath toPath:self.scorePath error:nil];
+    }
+    
+    NSLog(@"%@", self.scorePath);
+    
+    // Load the Property List.
+    self.scoreArray = [[NSMutableArray alloc] initWithContentsOfFile:self.scorePath];
+}
+
+//- (void)loadScoreList
+//{
+//    self.scorePath = [[NSBundle mainBundle] pathForResource:@"HighScores" ofType:@"plist"];
+//    if(self.scorePath){
+//        NSLog(@"plist loaded!");
+//        self.scoreArray = [NSMutableArray arrayWithContentsOfFile:self.scorePath];
+//        return;
+//    }
+//}
 
 - (void)didReceiveMemoryWarning
 {
