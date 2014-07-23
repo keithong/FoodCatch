@@ -9,7 +9,7 @@
 #import "AboutViewController.h"
 
 @interface AboutViewController ()
-@property (unsafe_unretained, nonatomic) IBOutlet UIWebView *aboutWebView;
+@property (assign, nonatomic) IBOutlet UIWebView *aboutWebView;
 
 @end
 
@@ -68,14 +68,14 @@
                                                                cancelButtonTitle:@"OK"
                                                                otherButtonTitles:nil];
                                [errorConnecting show];
-                               [errorConnecting dealloc];
                                [errorConnecting release];
+                               errorConnecting = nil;
                            }];
 }
 
 - (void)dealloc
 {
-    [self.aboutWebView release];
+    self.aboutWebView = nil;
     [super dealloc];
 }
 

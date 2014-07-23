@@ -13,9 +13,9 @@
 
 @interface MainMenuViewController ()
 
-@property (unsafe_unretained, nonatomic) IBOutlet UIButton *btnAbout;
-@property (unsafe_unretained, nonatomic) IBOutlet UIButton *btnHighScore;
-@property (unsafe_unretained, nonatomic) IBOutlet UIButton *btnPlay;
+@property (assign, nonatomic) IBOutlet UIButton *btnAbout;
+@property (assign, nonatomic) IBOutlet UIButton *btnHighScore;
+@property (assign, nonatomic) IBOutlet UIButton *btnPlay;
 
 @end
 
@@ -24,22 +24,22 @@
 - (IBAction)goToHighScore:(id)sender {
     HighScoresViewController *highScoreVC = [[HighScoresViewController alloc]init];
     [self.navigationController pushViewController:highScoreVC animated:NO];
-    
     [highScoreVC release];
+    highScoreVC = nil;
 }
 
 - (IBAction)goToPlay:(id)sender {
     GameViewController *gameVC = [[GameViewController alloc]init];
     [self.navigationController pushViewController:gameVC animated:NO];
-    
     [gameVC release];
+    gameVC = nil;
 }
 
 - (IBAction)goToAbout:(id)sender {
     AboutViewController *aboutVC = [[AboutViewController alloc]init];
     [self.navigationController pushViewController:aboutVC animated:NO];
-    
     [aboutVC release];
+    aboutVC = nil;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -69,9 +69,10 @@
 
 - (void)dealloc
 {
-    [self.btnAbout release];
-    [self.btnHighScore release];
-    [self.btnPlay release];
+    self.btnAbout = nil;
+    self.btnHighScore = nil;
+    self.btnPlay = nil;
+    
     [super dealloc];
 }
 @end

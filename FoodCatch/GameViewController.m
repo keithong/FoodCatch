@@ -270,19 +270,13 @@
 
 - (void)dealloc
 {
-    [self.floor dealloc];
-    [self.basket dealloc];
-    [self.foodArray dealloc];
-    [self.scoreLabel dealloc];
-    [self.lifeLabel dealloc];
-    [self.basketMover dealloc];
-
-    [self.basket release];
-    [self.floor release];
-    [self.foodArray release];
-    [self.scoreLabel release];
-    [self.lifeLabel release];
-    [self.basketMover release];
+    self.basket = nil;
+    self.floor = nil;
+    self.foodArray = nil;
+    self.scoreLabel = nil;
+    self.lifeLabel = nil;
+    self.basketMover = nil;
+    
     [super dealloc];
 }
 

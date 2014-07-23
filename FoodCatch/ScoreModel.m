@@ -21,8 +21,6 @@
 
 -(void)dealloc
 {
-    [self.playerName release];
-    [self.playerScore release];
     [super dealloc];
 }
 

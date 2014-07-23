@@ -55,7 +55,6 @@
     self.scoreMessage.alertViewStyle = UIAlertViewStylePlainTextInput;
 
     [self.scoreMessage show];
-    [self.scoreMessage release];
 }
 
 - (void)alertView:(UIAlertView *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -98,15 +97,13 @@
 }
 
 - (void)dealloc {
-    [self.scoreMessage dealloc];
-    [self.newScore dealloc];
-    [self.scoreArray dealloc];
-    
-    [self.scoreMessage release];
     [self.newScore release];
-    [self.scoreArray release];
-    [self.btnPlayAgain release];
-    [self.btnMainMenu release];
+   
+    self.scoreMessage = nil;
+    self.newScore = nil;
+    self.scoreArray = nil;
+    self.btnPlayAgain = nil;
+    self.btnMainMenu = nil;
     [super dealloc];
 }
 @end

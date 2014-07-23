@@ -19,13 +19,16 @@
         
         MainMenuViewController *mainMenuVC = [[MainMenuViewController alloc]init];
         UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:mainMenuVC];
-        [navController setNavigationBarHidden:YES];
+                [navController setNavigationBarHidden:YES];
         self.window.rootViewController = navController;
         self.window.backgroundColor = [UIColor whiteColor];
         
-        [mainMenuVC release];
-        [navController release];
         
+        [navController release];
+        [mainMenuVC release];
+
+        mainMenuVC = nil;
+        navController = nil;
         
     }
     [self.window makeKeyAndVisible];
