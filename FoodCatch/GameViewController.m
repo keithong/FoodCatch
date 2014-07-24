@@ -11,20 +11,20 @@
 // Basket Properties
 int const BASKET_WIDTH = 60;
 int const BASKET_HEIGHT = 20;
-int const BASKET_FLOOR_GAP = 5;
+int const BASKET_FLOOR_GAP = 60;
 int const BASKET_MOVE_INTERVAL = 10;
 
 float const BASKET_MINIMUM_PRESS_DURATION = .0000000000001;
 
 // Food Properties
 int const FOOD_SIZE = 15;
-float const FOOD_FALL_ANIMATION_DURATION = .7;
+float const FOOD_FALL_ANIMATION_DURATION = .6;
 
 // Floor Property
 int const FLOOR_HEIGHT = 1;
 
 // Timers Properties
-float const FOOD_TIMER_INTERVAL = 1.2;
+float const FOOD_TIMER_INTERVAL = .6;
 float const FOOD_COLLISION_INTERVAL = .05;
 
 // Labels Properties
@@ -63,7 +63,6 @@ int const LABEL_WIDTH = 90;
 @property (nonatomic) int foodHeight;
 @property (nonatomic) int foodWidth;
 @property (nonatomic) int foodRandomPosition;
-@property (nonatomic) float foodFallAnimationDuration;
 
 @property (nonatomic) int floorWidth;
 @property (nonatomic) int floorYPosition;
@@ -102,7 +101,6 @@ int const LABEL_WIDTH = 90;
     [super didReceiveMemoryWarning];
 }
 
-
 - (void)gameElements
 {
     // Call your game elements here
@@ -112,11 +110,8 @@ int const LABEL_WIDTH = 90;
     [self createBasket];
     [self createBasketMover];
     [self createLabels];
-    
-    [self foodTimer];
-    [self foodBasketCollisionTimer];
-    [self foodFloorCollisionTimer];
 }
+
 
 #pragma mark - Create Elements
 
@@ -133,6 +128,7 @@ int const LABEL_WIDTH = 90;
     
     self.foodWidth = FOOD_SIZE;
     self.foodHeight = FOOD_SIZE;
+
     
     self.floorWidth = self.screenWidth;
     self.floorYPosition = self.screenHeight - FLOOR_HEIGHT;
@@ -173,14 +169,12 @@ int const LABEL_WIDTH = 90;
     
     // If the food will be falling outside the left side of the screen, move it inside the screen
     if (self.foodRandomPosition < 0){
-        self.foodRandomPosition = self.foodWidth;
-        return;
+        self.foodRandomPosition = self.foodWidth;;
     }
     
     // If the food will be falling outside the right side of the screen, move it inside the screen
     if(self.foodRandomPosition > self.screenWidth - self.foodWidth){
         self.foodRandomPosition = self.screenWidth - self.foodWidth;
-        return;
     }
     
     self.food = [[[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, self.foodWidth, self.foodHeight)] autorelease];
@@ -219,18 +213,20 @@ int const LABEL_WIDTH = 90;
 
 - (void)moveBasket:(UILongPressGestureRecognizer *)gesture
 {
-    CGPoint screenPoint = [gesture locationInView:self.view];
-    
-    if(screenPoint.x < self.screenHalf) { // If the user taps on the left side of the screen
-        if(self.basketOriginalXPosition != 0){ // Check if the basket is already at the left screen bound
-            self.basket.frame = CGRectMake(self.basketOriginalXPosition -= BASKET_MOVE_INTERVAL, self.basketYPosition, BASKET_WIDTH, BASKET_HEIGHT);
+    if (gesture.state == UIGestureRecognizerStateChanged) {
+        
+        NSInteger touchCount = [gesture numberOfTouches];
+        
+        for (NSInteger t = 0; t < touchCount; t++) {
+            CGPoint point = [gesture locationOfTouch:t inView:gesture.view];
+            
+            // Check if the basket is already at the screen bounds
+            if(point.x < self.screenWidth - BASKET_WIDTH){
+                self.basket.frame = CGRectMake(point.x, self.basketYPosition, BASKET_WIDTH, BASKET_HEIGHT);
+                return;
+            }
+        
         }
-        return;
-    }
-    
-    // The exact opposite of the code above
-    if(self.basketOriginalXPosition != self.screenWidth - BASKET_WIDTH){
-        self.basket.frame = CGRectMake(self.basketOriginalXPosition += BASKET_MOVE_INTERVAL, self.basketYPosition, BASKET_WIDTH, BASKET_HEIGHT);
     }
 }
 
