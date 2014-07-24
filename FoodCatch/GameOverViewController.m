@@ -47,13 +47,13 @@
 
 - (void)viewScoreMessage
 {
-    self.scoreMessage =[[UIAlertView alloc ] initWithTitle:@"Game Over!"
-                                                                message:@"Enter your name"
-                                                               delegate:self
-                                                      cancelButtonTitle:nil
-                                                      otherButtonTitles: @"Done", nil];
+    self.scoreMessage =[[[UIAlertView alloc ] initWithTitle:@"Game Over!"
+                                                    message:@"Enter your name"
+                                                   delegate:self
+                                          cancelButtonTitle:nil
+                                          otherButtonTitles: @"Done", nil] autorelease];
     self.scoreMessage.alertViewStyle = UIAlertViewStylePlainTextInput;
-
+    
     [self.scoreMessage show];
 }
 
@@ -64,21 +64,22 @@
 
 - (void)writeScore
 {
-    self.newScore = [[NSMutableDictionary alloc]init];
     NSString *scoreToString = [NSString stringWithFormat:@"%d",self.scoreToPass];
     
+    self.newScore = [NSMutableDictionary dictionary];
     [self.newScore setObject:[self.scoreMessage textFieldAtIndex:0].text forKey:@"playerName"];
     [self.newScore setObject:scoreToString forKey:@"playerScore"];
-    
-    [self.scoreArray addObject:self.newScore];
 
+    [self.scoreArray addObject:self.newScore];
     [self.scoreArray writeToFile:self.scorePath atomically:YES];
+
 }
 
 -(void)loadScoreList
 {
     self.scorePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     self.scorePath = [self.scorePath stringByAppendingPathComponent:@"HighScores.plist"];
+
     
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
@@ -87,7 +88,7 @@
         [fileManager copyItemAtPath:sourcePath toPath:self.scorePath error:nil];
     }
     
-    self.scoreArray = [[NSMutableArray alloc] initWithContentsOfFile:self.scorePath];
+    self.scoreArray = [[[NSMutableArray alloc] initWithContentsOfFile:self.scorePath] autorelease];
 }
 
 
@@ -97,8 +98,6 @@
 }
 
 - (void)dealloc {
-    [self.newScore release];
-   
     self.scoreMessage = nil;
     self.newScore = nil;
     self.scoreArray = nil;

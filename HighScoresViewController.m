@@ -42,8 +42,10 @@
 -(id)initWithScoreModel:(ScoreModel *)scoreModel
 {
     self = [super init];
-    self.playerNameForCell = scoreModel.playerName;
-    self.playerScoreForCell = scoreModel.playerScore;
+    if(self){
+        self.playerNameForCell = scoreModel.playerName;
+        self.playerScoreForCell = scoreModel.playerScore;
+    }
     return self;
 }
 
@@ -67,13 +69,10 @@
     cell.playerNameLabel.text = highScoreVC.playerNameForCell;
     cell.playerScoreLabel.text = highScoreVC.playerScoreForCell;
 
-    
+    [highScoreVC release];
+
     return cell;
     
-    
-    [highScoreVC release];
-    [cell.playerScoreLabel.text release];
-    [score release];
     cell.playerScoreLabel.text = nil;
     highScoreVC = nil;
     score = nil;
@@ -112,7 +111,7 @@
         NSString *sourcePath = [[NSBundle mainBundle] pathForResource:@"HighScores" ofType:@"plist"];
         [fileManager copyItemAtPath:sourcePath toPath:self.scorePath error:nil];
     }
-    self.scoreArray = [[NSMutableArray alloc] initWithContentsOfFile:self.scorePath];
+    self.scoreArray = [[[NSMutableArray alloc] initWithContentsOfFile:self.scorePath] autorelease];
 
 }
 

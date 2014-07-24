@@ -15,20 +15,13 @@
 {
     if (!self.window.rootViewController)
     {
-        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window = [[[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]] autorelease];
         
-        MainMenuViewController *mainMenuVC = [[MainMenuViewController alloc]init];
-        UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:mainMenuVC];
-                [navController setNavigationBarHidden:YES];
+        MainMenuViewController *mainMenuVC = [[[MainMenuViewController alloc]init] autorelease];
+        UINavigationController *navController = [[[UINavigationController alloc]initWithRootViewController:mainMenuVC] autorelease];
+        [navController setNavigationBarHidden:YES];
         self.window.rootViewController = navController;
         self.window.backgroundColor = [UIColor whiteColor];
-        
-        
-        [navController release];
-        [mainMenuVC release];
-
-        mainMenuVC = nil;
-        navController = nil;
         
     }
     [self.window makeKeyAndVisible];

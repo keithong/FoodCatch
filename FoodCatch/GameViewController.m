@@ -148,7 +148,7 @@
 
 - (void)createBasket
 {
-    self.basket = [[UIView alloc]initWithFrame:CGRectMake(self.screenWidth/2, self.basketYPosition, self.basketWidth, self.basketHeight)];
+    self.basket = [[[UIView alloc]initWithFrame:CGRectMake(self.screenWidth/2, self.basketYPosition, self.basketWidth, self.basketHeight)] autorelease];
     self.basket.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.basket];
     self.basketOriginalXPosition = self.basket.frame.origin.x;
@@ -157,7 +157,7 @@
 - (void)createFood
 {
     self.foodRandomPosition = arc4random() % self.screenWidth;
-    self.food = [[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, self.foodWidth, self.foodHeight)];
+    self.food = [[[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, self.foodWidth, self.foodHeight)] autorelease];
     self.food.backgroundColor = [UIColor brownColor];
     [self.view addSubview:self.food];
     
@@ -167,14 +167,14 @@
 
 - (void)createFloor
 {
-    self.floor = [[UIView alloc] initWithFrame:CGRectMake(0, self.floorYPosition , self.floorWidth, self.floorHeight)];
+    self.floor = [[[UIView alloc] initWithFrame:CGRectMake(0, self.floorYPosition , self.floorWidth, self.floorHeight)] autorelease];
     [self.view addSubview:self.floor];
 }
 
 - (void)createLabels
 {
-    self.scoreLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.labelWidth, 0, self.labelHeight, self.labelWidth)];
-    self.lifeLabel = [[UILabel alloc]initWithFrame:CGRectMake(self.screenWidth - self.labelWidth, 0, self.labelHeight, self.labelWidth)];
+    self.scoreLabel = [[[UILabel alloc]initWithFrame:CGRectMake(self.labelWidth, 0, self.labelHeight, self.labelWidth)] autorelease];
+    self.lifeLabel = [[[UILabel alloc]initWithFrame:CGRectMake(self.screenWidth - self.labelWidth, 0, self.labelHeight, self.labelWidth)] autorelease];
     [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", self.life]];
     [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.score]];
     [self.view addSubview:self.scoreLabel];
@@ -257,12 +257,12 @@
     [self.foodTimer invalidate];
     [self.foodBasketCollisionTimer invalidate];
     [self.foodFloorCollisionTimer invalidate];
-    [self.view removeFromSuperview];
     [self.basket removeFromSuperview];
     [self.food removeFromSuperview];
     [self.floor removeFromSuperview];
     [self.lifeLabel removeFromSuperview];
     [self.scoreLabel removeFromSuperview];
+    [self.view removeFromSuperview];
     self.life = 3;
     self.score = 0;
     
