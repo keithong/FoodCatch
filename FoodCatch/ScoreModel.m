@@ -9,7 +9,8 @@
 #import "ScoreModel.h"
 
 @implementation ScoreModel
--(id)initWithDictionary:(NSDictionary *)dict
+
+- (id)initWithDictionary:(NSDictionary *)dict
 {
     self = [super init];
     if (self) {
@@ -19,7 +20,7 @@
     return self;
 }
 
--(void)dealloc
+- (void)dealloc
 {
     [super dealloc];
 }

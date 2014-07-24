@@ -10,6 +10,8 @@
 #import "ScoreModel.h"
 #import "ScoreCell.h"
 
+int const NUM_OF_SCORES = 10;
+
 @interface HighScoresViewController()
 
 @property (retain, nonatomic) NSString *scorePath;
@@ -20,13 +22,13 @@
 @property (retain, nonatomic) NSMutableArray *scoreArray;
 @property (retain, nonatomic) NSMutableDictionary *cellIdentifier;
 
--(id)initWithScoreModel:(ScoreModel *)scoreModel;
+- (id)initWithScoreModel:(ScoreModel *)scoreModel;
 
 @end
 
-
 @implementation HighScoresViewController
--(instancetype)init
+
+- (instancetype)init
 {
     self = [super initWithStyle:UITableViewStylePlain];
     if(self){
@@ -34,12 +36,12 @@
     return self;
 }
 
--(instancetype)initWithStyle:(UITableViewStyle)style
+- (instancetype)initWithStyle:(UITableViewStyle)style
 {
     return [self init];
 }
 
--(id)initWithScoreModel:(ScoreModel *)scoreModel
+- (id)initWithScoreModel:(ScoreModel *)scoreModel
 {
     self = [super init];
     if(self){
@@ -50,17 +52,23 @@
 }
 
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
+    // We only want to see 10 recent players
+    if([self.scoreArray count] < NUM_OF_SCORES){
     return [self.scoreArray count];
+    }
+    return NUM_OF_SCORES;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     ScoreCell *cell = [tableView dequeueReusableCellWithIdentifier:self.scoreCellIdentifier forIndexPath:indexPath];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
-    self.cellIdentifier = [self.scoreArray objectAtIndex:indexPath.row];
+    // Sort the scores by who played recently
+    self.cellIdentifier = [[[self.scoreArray reverseObjectEnumerator] allObjects] objectAtIndex:indexPath.row];
+    
     ScoreModel *score = [[ScoreModel alloc]initWithDictionary:self.cellIdentifier];
     
     HighScoresViewController *highScoreVC = [[HighScoresViewController alloc]initWithScoreModel:score];
@@ -72,23 +80,18 @@
     [highScoreVC release];
 
     return cell;
-    
-    cell.playerScoreLabel.text = nil;
-    highScoreVC = nil;
-    score = nil;
 }
 
-
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
 }
 
--(void)viewDidLoad
+- (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.title = @"Player Scores";
+    self.title = @"Recent Scores";
     
     self.scoreCellIdentifier = [NSString stringWithFormat:@"ScoreCell"];
     
@@ -99,8 +102,7 @@
     [self loadScoreList];
 }
 
-
--(void)loadScoreList
+- (void)loadScoreList
 {
     self.scorePath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     self.scorePath = [self.scorePath stringByAppendingPathComponent:@"HighScores.plist"];
@@ -115,7 +117,7 @@
 
 }
 
--(void)dealloc
+- (void)dealloc
 {
     [super dealloc];
 }

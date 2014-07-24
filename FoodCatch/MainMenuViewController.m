@@ -21,6 +21,7 @@
 
 @implementation MainMenuViewController
 
+#pragma mark - Main Menu Button Actions
 - (IBAction)goToHighScore:(id)sender {
     HighScoresViewController *highScoreVC = [[HighScoresViewController alloc]init];
     [self.navigationController pushViewController:highScoreVC animated:NO];
@@ -41,6 +42,8 @@
     [aboutVC release];
     aboutVC = nil;
 }
+
+#pragma mark - General Functions
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -75,4 +78,5 @@
     
     [super dealloc];
 }
+
 @end

@@ -8,9 +8,34 @@
 #import "GameViewController.h"
 #import "GameOverViewController.h"
 
+// Basket Properties
+int const BASKET_WIDTH = 60;
+int const BASKET_HEIGHT = 20;
+int const BASKET_FLOOR_GAP = 5;
+int const BASKET_MOVE_INTERVAL = 10;
 
+float const BASKET_MINIMUM_PRESS_DURATION = .0000000000001;
+
+// Food Properties
+int const FOOD_SIZE = 15;
+float const FOOD_FALL_ANIMATION_DURATION = .7;
+
+// Floor Property
+int const FLOOR_HEIGHT = 1;
+
+// Timers Properties
+float const FOOD_TIMER_INTERVAL = 1.2;
+float const FOOD_COLLISION_INTERVAL = .05;
+
+// Labels Properties
+int const SCORE = 0;
+int const LIFE = 0;
+
+int const LABEL_HEIGHT = 80;
+int const LABEL_WIDTH = 90;
 
 @interface GameViewController ()
+
 @property (retain, nonatomic) NSTimer *foodTimer;
 @property (retain, nonatomic) NSTimer *foodFloorCollisionTimer;
 @property (retain, nonatomic) NSTimer *foodBasketCollisionTimer;
@@ -28,13 +53,14 @@
 
 @property (nonatomic) int screenHeight;
 @property (nonatomic) int screenWidth;
+@property (nonatomic) int screenHalf;
 
-@property (nonatomic) float basketOriginalXPosition;
-@property (nonatomic) float basketYPosition;
 @property (nonatomic) int basketHeight;
 @property (nonatomic) int basketWidth;
 @property (nonatomic) int basketMoveInterval;
 @property (nonatomic) float basketMinimumPressDuration;
+@property (nonatomic) float basketOriginalXPosition;
+@property (nonatomic) float basketYPosition;
 
 @property (nonatomic) int foodHeight;
 @property (nonatomic) int foodWidth;
@@ -51,16 +77,14 @@
 @property (nonatomic) int labelHeight;
 @property (nonatomic) int labelWidth;
 
-
-
 @end
+
 @implementation GameViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
@@ -68,9 +92,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-//    [self gameElements];
-   
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -82,73 +103,78 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
-- (void)gameMeasures
-{
-    // Create a method to store your "magic numbers"
-    // And some more game measurements
-    
-    self.screenWidth = [UIScreen mainScreen].bounds.size.width;
-    self.screenHeight = [UIScreen mainScreen].bounds.size.height;
-    
-    self.basketWidth = 60;
-    self.basketHeight= 20;
-    self.basketYPosition = self.screenHeight - (self.basketHeight + 5);
-    self.basketMoveInterval = 10;
-    self.basketMinimumPressDuration = .0000000000001;
-    
-    self.foodWidth = 15;
-    self.foodHeight = 15;
-    self.foodFallAnimationDuration = .7;
-    
-    self.floorHeight = 1;
-    self.floorWidth = self.screenWidth;
-    self.floorYPosition = self.screenHeight - self.floorHeight;
-    
-    self.score = 0;
-    self.life = 3;
-    
-    self.foodTimer = [NSTimer scheduledTimerWithTimeInterval:1.2
-                                                      target:self
-                                                    selector:@selector(createFood)
-                                                    userInfo:nil
-                                                     repeats:YES];
-    
-    self.foodBasketCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:.05
-                                                                     target:self
-                                                                   selector:@selector(isFoodBasketColliding)
-                                                                   userInfo:nil
-                                                                    repeats:YES];
-    
-    self.foodFloorCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:.05
-                                                                    target:self
-                                                                  selector:@selector(isFoodFloorColliding)
-                                                                  userInfo:nil
-                                                                   repeats:YES];
-    
-    self.labelHeight = 80;
-    self.labelWidth = 90;
-    
-}
 
 - (void)gameElements
 {
     // Call your game elements here
     [self gameMeasures];
+    
     [self createFloor];
     [self createBasket];
     [self createBasketMover];
     [self createLabels];
+    
     [self foodTimer];
     [self foodBasketCollisionTimer];
     [self foodFloorCollisionTimer];
 }
 
+#pragma mark - Create Elements
+
+- (void)gameMeasures
+{
+    // This method takes the constant values declared above
+    // And creates different game measures of the game
+    
+    self.screenWidth = [UIScreen mainScreen].bounds.size.width;
+    self.screenHeight = [UIScreen mainScreen].bounds.size.height;
+    self.screenHalf = self.screenWidth/2;
+    
+    self.basketWidth = BASKET_WIDTH;
+    self.basketHeight= BASKET_HEIGHT;
+    self.basketYPosition = self.screenHeight - (self.basketHeight + BASKET_FLOOR_GAP);
+    self.basketMoveInterval = BASKET_MOVE_INTERVAL;
+    self.basketMinimumPressDuration = BASKET_MINIMUM_PRESS_DURATION;
+    
+    self.foodWidth = FOOD_SIZE;
+    self.foodHeight = FOOD_SIZE;
+    self.foodFallAnimationDuration = FOOD_FALL_ANIMATION_DURATION;
+    
+    self.floorHeight = FLOOR_HEIGHT;
+    self.floorWidth = self.screenWidth;
+    self.floorYPosition = self.screenHeight - self.floorHeight;
+    
+    self.score = SCORE;
+    self.life = LIFE;
+    
+    self.foodTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_TIMER_INTERVAL
+                                                      target:self
+                                                    selector:@selector(createFood)
+                                                    userInfo:nil
+                                                     repeats:YES];
+    
+    self.foodBasketCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_COLLISION_INTERVAL
+                                                                     target:self
+                                                                   selector:@selector(isFoodBasketColliding)
+                                                                   userInfo:nil
+                                                                    repeats:YES];
+    
+    self.foodFloorCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_COLLISION_INTERVAL
+                                                                    target:self
+                                                                  selector:@selector(isFoodFloorColliding)
+                                                                  userInfo:nil
+                                                                   repeats:YES];
+    
+    self.labelHeight = LABEL_HEIGHT;
+    self.labelWidth = LABEL_WIDTH;
+    
+}
+
 - (void)createBasket
 {
-    self.basket = [[[UIView alloc]initWithFrame:CGRectMake(self.screenWidth/2, self.basketYPosition, self.basketWidth, self.basketHeight)] autorelease];
+    self.basket = [[[UIView alloc]initWithFrame:CGRectMake(self.screenHalf, self.basketYPosition, self.basketWidth, self.basketHeight)] autorelease];
     self.basket.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.basket];
     self.basketOriginalXPosition = self.basket.frame.origin.x;
@@ -157,6 +183,19 @@
 - (void)createFood
 {
     self.foodRandomPosition = arc4random() % self.screenWidth;
+    
+    // If the food will be falling outside the left side of the screen, move it inside the screen
+    if (self.foodRandomPosition < 0){
+        self.foodRandomPosition = self.foodWidth;
+        return;
+    }
+    
+    // If the food will be falling outside the right side of the screen, move it inside the screen
+    if(self.foodRandomPosition > self.screenWidth - self.foodWidth){
+        self.foodRandomPosition = self.screenWidth - self.foodWidth;
+        return;
+    }
+    
     self.food = [[[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, self.foodWidth, self.foodHeight)] autorelease];
     self.food.backgroundColor = [UIColor brownColor];
     [self.view addSubview:self.food];
@@ -182,6 +221,8 @@
     
 }
 
+#pragma mark - Element Animators
+
 - (void)makeFoodFall
 {
     [UIView animateWithDuration:self.foodFallAnimationDuration animations:^{
@@ -192,7 +233,8 @@
 - (void)moveBasket:(UILongPressGestureRecognizer *)gesture
 {
     CGPoint screenPoint = [gesture locationInView:self.view];
-    if(screenPoint.x < self.screenWidth/2) { // If the user taps on the left side of the screen
+    
+    if(screenPoint.x < self.screenHalf) { // If the user taps on the left side of the screen
         if(self.basketOriginalXPosition != 0){ // Check if the basket is already at the left screen bound
             self.basket.frame = CGRectMake(self.basketOriginalXPosition -= self.basketMoveInterval, self.basketYPosition, self.basketWidth, self.basketHeight);
         }
@@ -212,6 +254,8 @@
     [self.view addGestureRecognizer:self.basketMover];
 }
 
+#pragma mark - Collision Checks
+
 - (void)isFoodBasketColliding
 {
     // If the presentation layer of the food and the basket collides, the player scores
@@ -221,7 +265,6 @@
         
         [self.food.layer removeAllAnimations];  // Stop the food from falling in the ground
         [self.food removeFromSuperview];        // Remove the food from the screen
-        
     }
 }
 
@@ -237,9 +280,10 @@
         
         [self.food removeFromSuperview];
         [self.food.layer removeAllAnimations];
-        
     }
 }
+
+#pragma mark - Game Over Events
 
 - (void)gameOver
 {
@@ -257,15 +301,16 @@
     [self.foodTimer invalidate];
     [self.foodBasketCollisionTimer invalidate];
     [self.foodFloorCollisionTimer invalidate];
+    
     [self.basket removeFromSuperview];
     [self.food removeFromSuperview];
     [self.floor removeFromSuperview];
     [self.lifeLabel removeFromSuperview];
     [self.scoreLabel removeFromSuperview];
     [self.view removeFromSuperview];
-    self.life = 3;
-    self.score = 0;
     
+    self.life = LIFE;
+    self.score = SCORE;
 }
 
 - (void)dealloc
@@ -279,6 +324,5 @@
     
     [super dealloc];
 }
-
 
 @end

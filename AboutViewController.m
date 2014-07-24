@@ -9,6 +9,7 @@
 #import "AboutViewController.h"
 
 @interface AboutViewController ()
+
 @property (assign, nonatomic) IBOutlet UIWebView *aboutWebView;
 
 @end
@@ -29,7 +30,7 @@
     [self connectToAds];
 }
 
--(void)viewWillAppear:(BOOL)animated
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:NO];
@@ -40,7 +41,7 @@
     [super didReceiveMemoryWarning];
 }
 
--(void)connectToAds
+- (void)connectToAds
 {
     NSString *requestString = @"http://ads.cyscorpions.com/en/trainingcenter/";
     
@@ -60,7 +61,7 @@
                                    return;
                                }
                                
-                               // Show a error pop-up message if there's no internet connection
+                               // Show an error pop-up message if there's no internet connection
                                UIAlertView *errorConnecting = [[UIAlertView alloc]
                                                                initWithTitle:@"Error"
                                                                message:@"Failed connect. Please try again."
