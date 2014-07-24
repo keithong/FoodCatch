@@ -29,7 +29,7 @@ float const FOOD_COLLISION_INTERVAL = .05;
 
 // Labels Properties
 int const SCORE = 0;
-int const LIFE = 0;
+int const LIFE = 3;
 
 int const LABEL_HEIGHT = 80;
 int const LABEL_WIDTH = 90;
@@ -57,8 +57,6 @@ int const LABEL_WIDTH = 90;
 
 @property (nonatomic) int basketHeight;
 @property (nonatomic) int basketWidth;
-@property (nonatomic) int basketMoveInterval;
-@property (nonatomic) float basketMinimumPressDuration;
 @property (nonatomic) float basketOriginalXPosition;
 @property (nonatomic) float basketYPosition;
 
@@ -67,7 +65,6 @@ int const LABEL_WIDTH = 90;
 @property (nonatomic) int foodRandomPosition;
 @property (nonatomic) float foodFallAnimationDuration;
 
-@property (nonatomic) int floorHeight;
 @property (nonatomic) int floorWidth;
 @property (nonatomic) int floorYPosition;
 
@@ -131,20 +128,14 @@ int const LABEL_WIDTH = 90;
     self.screenWidth = [UIScreen mainScreen].bounds.size.width;
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     self.screenHalf = self.screenWidth/2;
-    
-    self.basketWidth = BASKET_WIDTH;
-    self.basketHeight= BASKET_HEIGHT;
-    self.basketYPosition = self.screenHeight - (self.basketHeight + BASKET_FLOOR_GAP);
-    self.basketMoveInterval = BASKET_MOVE_INTERVAL;
-    self.basketMinimumPressDuration = BASKET_MINIMUM_PRESS_DURATION;
+
+    self.basketYPosition = self.screenHeight - (BASKET_HEIGHT + BASKET_FLOOR_GAP);
     
     self.foodWidth = FOOD_SIZE;
     self.foodHeight = FOOD_SIZE;
-    self.foodFallAnimationDuration = FOOD_FALL_ANIMATION_DURATION;
     
-    self.floorHeight = FLOOR_HEIGHT;
     self.floorWidth = self.screenWidth;
-    self.floorYPosition = self.screenHeight - self.floorHeight;
+    self.floorYPosition = self.screenHeight - FLOOR_HEIGHT;
     
     self.score = SCORE;
     self.life = LIFE;
@@ -166,15 +157,11 @@ int const LABEL_WIDTH = 90;
                                                                   selector:@selector(isFoodFloorColliding)
                                                                   userInfo:nil
                                                                    repeats:YES];
-    
-    self.labelHeight = LABEL_HEIGHT;
-    self.labelWidth = LABEL_WIDTH;
-    
 }
 
 - (void)createBasket
 {
-    self.basket = [[[UIView alloc]initWithFrame:CGRectMake(self.screenHalf, self.basketYPosition, self.basketWidth, self.basketHeight)] autorelease];
+    self.basket = [[[UIView alloc]initWithFrame:CGRectMake(self.screenHalf, self.basketYPosition, BASKET_WIDTH, BASKET_HEIGHT)] autorelease];
     self.basket.backgroundColor = [UIColor grayColor];
     [self.view addSubview:self.basket];
     self.basketOriginalXPosition = self.basket.frame.origin.x;
@@ -206,14 +193,14 @@ int const LABEL_WIDTH = 90;
 
 - (void)createFloor
 {
-    self.floor = [[[UIView alloc] initWithFrame:CGRectMake(0, self.floorYPosition , self.floorWidth, self.floorHeight)] autorelease];
+    self.floor = [[[UIView alloc] initWithFrame:CGRectMake(0, self.floorYPosition , self.floorWidth, FLOOR_HEIGHT)] autorelease];
     [self.view addSubview:self.floor];
 }
 
 - (void)createLabels
 {
-    self.scoreLabel = [[[UILabel alloc]initWithFrame:CGRectMake(self.labelWidth, 0, self.labelHeight, self.labelWidth)] autorelease];
-    self.lifeLabel = [[[UILabel alloc]initWithFrame:CGRectMake(self.screenWidth - self.labelWidth, 0, self.labelHeight, self.labelWidth)] autorelease];
+    self.scoreLabel = [[[UILabel alloc]initWithFrame:CGRectMake(LABEL_WIDTH, 0, LABEL_HEIGHT, LABEL_WIDTH)] autorelease];
+    self.lifeLabel = [[[UILabel alloc]initWithFrame:CGRectMake(self.screenWidth - LABEL_WIDTH, 0, LABEL_HEIGHT, LABEL_WIDTH)] autorelease];
     [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", self.life]];
     [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.score]];
     [self.view addSubview:self.scoreLabel];
@@ -225,7 +212,7 @@ int const LABEL_WIDTH = 90;
 
 - (void)makeFoodFall
 {
-    [UIView animateWithDuration:self.foodFallAnimationDuration animations:^{
+    [UIView animateWithDuration:FOOD_FALL_ANIMATION_DURATION animations:^{
         self.food.frame = CGRectMake(self.foodRandomPosition, self.screenHeight, self.foodWidth, self.foodHeight);
     }];
 }
@@ -236,21 +223,21 @@ int const LABEL_WIDTH = 90;
     
     if(screenPoint.x < self.screenHalf) { // If the user taps on the left side of the screen
         if(self.basketOriginalXPosition != 0){ // Check if the basket is already at the left screen bound
-            self.basket.frame = CGRectMake(self.basketOriginalXPosition -= self.basketMoveInterval, self.basketYPosition, self.basketWidth, self.basketHeight);
+            self.basket.frame = CGRectMake(self.basketOriginalXPosition -= BASKET_MOVE_INTERVAL, self.basketYPosition, BASKET_WIDTH, BASKET_HEIGHT);
         }
         return;
     }
     
     // The exact opposite of the code above
-    if(self.basketOriginalXPosition != self.screenWidth - self.basketWidth){
-        self.basket.frame = CGRectMake(self.basketOriginalXPosition += self.basketMoveInterval, self.basketYPosition, self.basketWidth, self.basketHeight);
+    if(self.basketOriginalXPosition != self.screenWidth - BASKET_WIDTH){
+        self.basket.frame = CGRectMake(self.basketOriginalXPosition += BASKET_MOVE_INTERVAL, self.basketYPosition, BASKET_WIDTH, BASKET_HEIGHT);
     }
 }
 
 - (void)createBasketMover
 {
     self.basketMover = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(moveBasket:)];
-    self.basketMover.minimumPressDuration = self.basketMinimumPressDuration;
+    self.basketMover.minimumPressDuration = BASKET_MINIMUM_PRESS_DURATION;
     [self.view addGestureRecognizer:self.basketMover];
 }
 

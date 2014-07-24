@@ -22,6 +22,7 @@
 @implementation MainMenuViewController
 
 #pragma mark - Main Menu Button Actions
+
 - (IBAction)goToHighScore:(id)sender {
     HighScoresViewController *highScoreVC = [[HighScoresViewController alloc]init];
     [self.navigationController pushViewController:highScoreVC animated:NO];
