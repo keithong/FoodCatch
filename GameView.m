@@ -8,63 +8,32 @@
 
 #import "GameView.h"
 
-//int const BASKET_WIDTH = 60;
-//int const BASKET_HEIGHT = 20;
-//int const BASKET_FLOOR_GAP = 60;
-//int const BASKET_MOVE_INTERVAL = 10;
-//
-//float const BASKET_MINIMUM_PRESS_DURATION = .0000000000001;
-//
-//// Food Properties
-//int const FOOD_SIZE = 15;
-//float const FOOD_FALL_ANIMATION_DURATION = .6;
-//
-//// Floor Property
-//int const FLOOR_HEIGHT = 1;
-//
-//// Timers Properties
-//float const FOOD_TIMER_INTERVAL = .6;
-//float const FOOD_COLLISION_INTERVAL = .05;
-//
-//// Labels Properties
-//int const SCORE = 0;
-//int const LIFE = 3;
-//
-//int const LABEL_HEIGHT = 80;
-//int const LABEL_WIDTH = 90;
+// Basket Properties
 
+int const BASKET_WIDTH = 60;
+int const BASKET_HEIGHT = 20;
+int const BASKET_FLOOR_GAP = 60;
+int const BASKET_MOVE_INTERVAL = 10;
 
-@interface GameView ()
-@property (retain, nonatomic) NSTimer *foodTimer;
-@property (retain, nonatomic) NSTimer *foodFloorCollisionTimer;
-@property (retain, nonatomic) NSTimer *foodBasketCollisionTimer;
+float const BASKET_MINIMUM_PRESS_DURATION = .0000000000001;
 
-@property (retain, nonatomic) NSMutableArray *foodArray;
+// Food Properties
+int const FOOD_SIZE = 15;
+float const FOOD_FALL_ANIMATION_DURATION = .6;
 
-@property (retain, nonatomic) UILongPressGestureRecognizer *basketMover;
+// Floor Property
+int const FLOOR_HEIGHT = 1;
 
+// Timers Properties
+float const FOOD_TIMER_INTERVAL = .6;
+float const FOOD_COLLISION_INTERVAL = .05;
 
-@property (nonatomic) int screenHeight;
-@property (nonatomic) int screenWidth;
-@property (nonatomic) int screenHalf;
+// Labels Properties
+int const SCORE = 0;
+int const LIFE = 3;
 
-@property (nonatomic) int basketHeight;
-@property (nonatomic) int basketWidth;
-@property (nonatomic) float basketOriginalXPosition;
-@property (nonatomic) float basketYPosition;
-
-@property (nonatomic) int foodRandomPosition;
-
-@property (nonatomic) int floorWidth;
-@property (nonatomic) int floorYPosition;
-
-@property (nonatomic) int life;
-@property (nonatomic) int score;
-
-@property (nonatomic) int labelHeight;
-@property (nonatomic) int labelWidth;
-
-@end
+int const LABEL_HEIGHT = 80;
+int const LABEL_WIDTH = 90;
 
 @implementation GameView
 
@@ -73,27 +42,139 @@
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
-    }
+        }
     return self;
 }
 
-- (void)printSomething
+
+- (void)gameMeasures
 {
-    NSLog(@"Hello, World!");
+    // This method takes the constant values declared above
+    // And creates different game measures of the game
+    
+    self.screenWidth = [UIScreen mainScreen].bounds.size.width;
+    self.screenHeight = [UIScreen mainScreen].bounds.size.height;
+    self.screenHalf = self.screenWidth/2;
+    
+    self.basketYPosition = self.screenHeight - (BASKET_HEIGHT + BASKET_FLOOR_GAP);
+    
+    self.floorWidth = self.screenWidth;
+    self.floorYPosition = self.screenHeight - FLOOR_HEIGHT;
+    
+    self.score = SCORE;
+    self.life = LIFE;
+    
+    
 }
+
+- (void)createBasket
+{
+    self.basket = [[[UIView alloc]initWithFrame:CGRectMake(self.screenHalf, self.basketYPosition, BASKET_WIDTH, BASKET_HEIGHT)] autorelease];
+    self.basket.backgroundColor = [UIColor grayColor];
+    self.basketOriginalXPosition = self.basket.frame.origin.x;
+   
+}
+
+- (void)createFood
+{
+    self.foodRandomPosition = arc4random() % self.screenWidth;
+
+    // If the food will be falling outside the left side of the screen, move it inside the screen
+    if (self.foodRandomPosition < 0){
+        self.foodRandomPosition = FOOD_SIZE;;
+    }
+
+    // If the food will be falling outside the right side of the screen, move it inside the screen
+    if(self.foodRandomPosition > self.screenWidth - FOOD_SIZE){
+        self.foodRandomPosition = self.screenWidth - FOOD_SIZE;
+    }
+
+    self.food = [[[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, FOOD_SIZE, FOOD_SIZE)] autorelease];
+    self.food.backgroundColor = [UIColor brownColor];
+
+    [self.foodArray addObject:self.food];
+    [self makeFoodFall];
+}
+
+- (void)createFloor
+{
+    self.floor = [[[UIView alloc] initWithFrame:CGRectMake(0, self.floorYPosition , self.floorWidth, FLOOR_HEIGHT)] autorelease];
+}
+
+- (void)createLabels
+{
+    self.scoreLabel = [[[UILabel alloc]initWithFrame:CGRectMake(LABEL_WIDTH, 0, LABEL_HEIGHT, LABEL_WIDTH)] autorelease];
+    self.lifeLabel = [[[UILabel alloc]initWithFrame:CGRectMake(self.screenWidth - LABEL_WIDTH, 0, LABEL_HEIGHT, LABEL_WIDTH)] autorelease];
+    [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", self.life]];
+    [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.score]];
+    
+}
+
+#pragma mark - Element Animators
 
 - (void)makeFoodFall
 {
-    NSLog(@"Hi");
-    [UIView animateWithDuration:.1 animations:^{
-        self.food.frame = CGRectMake(300, 50, 15, 15);
+    [UIView animateWithDuration:FOOD_FALL_ANIMATION_DURATION animations:^{
+        self.food.frame = CGRectMake(self.foodRandomPosition, self.screenHeight, FOOD_SIZE, FOOD_SIZE);
     }];
 }
 
-- (void)tapRecognizer
+#pragma mark - Collision Checks
+
+- (BOOL)isFoodFloorColliding
 {
-    NSLog(@"tap");
+    return CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.floor.layer presentationLayer] frame]);
 }
+
+- (BOOL)isFoodBasketColliding
+{
+    return CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.basket.layer presentationLayer]frame]);
+}
+- (void)destroyFood
+{
+    // Check if life is 0
+//    [self gameOver];
+
+    // If the presentation layer of the food and the floor collides, the player looses a life
+    //if(CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.floor.layer presentationLayer] frame])){
+        
+    //[self decrementLife:life];
+    
+        [self.food removeFromSuperview];
+        [self.food.layer removeAllAnimations];
+    //}
+}
+
+- (void)incrementScore:(int)score
+{
+    [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", score]];
+}
+
+- (void)decrementLife:(int)life
+{
+    [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", life]];
+}
+
+#pragma mark - Game Over Events
+
+
+- (void)destroyGameElements
+{
+//    [self.foodTimer invalidate];
+//    [self.foodBasketCollisionTimer invalidate];
+//    [self.foodFloorCollisionTimer invalidate];
+    
+    [self.basket removeFromSuperview];
+    [self.food removeFromSuperview];
+    [self.floor removeFromSuperview];
+    [self.lifeLabel removeFromSuperview];
+    [self.scoreLabel removeFromSuperview];
+//    [self.view removeFromSuperview];
+    
+    self.life = LIFE;
+    self.score = SCORE;
+}
+
 
 /*
 // Only override drawRect: if you perform custom drawing.
@@ -104,13 +185,8 @@
 }
 */
 
-- (void)dealloc {
-    [self.basket release];
-    [self.food release];
-    [self.floor release];
-    [self.lifeLabel release];
-    [self.scoreLabel release];
-
+- (void)dealloc
+{
     [super dealloc];
 }
 @end

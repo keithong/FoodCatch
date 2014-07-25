@@ -16,7 +16,7 @@
 		F04A764D197784B000BD7058 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A764B197784B000BD7058 /* AboutViewController.xib */; };
 		F04A7650197786D900BD7058 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A764F197786D900BD7058 /* GameViewController.m */; };
 		F04BFE031981F0DA00BF8C39 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = F04BFE021981F0DA00BF8C39 /* GameView.m */; };
-		F04BFE051981F10100BF8C39 /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04BFE041981F10100BF8C39 /* GameView.xib */; };
+		F087FC0919826D8800B5054B /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F087FC0819826D8800B5054B /* GameModel.m */; };
 		F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C923C8197E407500CCC3CA /* GameOverViewController.m */; };
 		F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C923C9197E407500CCC3CA /* GameOverViewController.xib */; };
 		F0D47FAB197780AA00BDD80C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAA197780AA00BDD80C /* Foundation.framework */; };
@@ -61,7 +61,8 @@
 		F04A764F197786D900BD7058 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		F04BFE011981F0DA00BF8C39 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GameView.h; path = ../GameView.h; sourceTree = "<group>"; };
 		F04BFE021981F0DA00BF8C39 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GameView.m; path = ../GameView.m; sourceTree = "<group>"; };
-		F04BFE041981F10100BF8C39 /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
+		F087FC0719826D8800B5054B /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
+		F087FC0819826D8800B5054B /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
 		F0C923C7197E407500CCC3CA /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
 		F0C923C8197E407500CCC3CA /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
 		F0C923C9197E407500CCC3CA /* GameOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
@@ -153,12 +154,13 @@
 				F0C923C9197E407500CCC3CA /* GameOverViewController.xib */,
 				F04BFE011981F0DA00BF8C39 /* GameView.h */,
 				F04BFE021981F0DA00BF8C39 /* GameView.m */,
-				F04BFE041981F10100BF8C39 /* GameView.xib */,
 				F04A764E197786D900BD7058 /* GameViewController.h */,
 				F04A764F197786D900BD7058 /* GameViewController.m */,
 				F0DD9248197E5C1600CC1652 /* HighScores.plist */,
 				F024B493197F440C001C9FD9 /* HighScoresViewController.h */,
 				F024B494197F440C001C9FD9 /* HighScoresViewController.m */,
+				F087FC0719826D8800B5054B /* GameModel.h */,
+				F087FC0819826D8800B5054B /* GameModel.m */,
 				F0D47FBC197780AA00BDD80C /* Images.xcassets */,
 				F04A76411977841B00BD7058 /* MainMenuViewController.h */,
 				F04A76421977841B00BD7058 /* MainMenuViewController.m */,
@@ -279,7 +281,6 @@
 			files = (
 				F024B49A197F50A5001C9FD9 /* ScoreCell.xib in Resources */,
 				F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */,
-				F04BFE051981F10100BF8C39 /* GameView.xib in Resources */,
 				F04A76451977841B00BD7058 /* MainMenuViewController.xib in Resources */,
 				F0D47FB5197780AA00BDD80C /* InfoPlist.strings in Resources */,
 				F0DD9249197E5C1600CC1652 /* HighScores.plist in Resources */,
@@ -311,6 +312,7 @@
 				F0DD924C197E5D7C00CC1652 /* ScoreModel.m in Sources */,
 				F04BFE031981F0DA00BF8C39 /* GameView.m in Sources */,
 				F0D47FB7197780AA00BDD80C /* main.m in Sources */,
+				F087FC0919826D8800B5054B /* GameModel.m in Sources */,
 				F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */,
 				F04A7650197786D900BD7058 /* GameViewController.m in Sources */,
 			);

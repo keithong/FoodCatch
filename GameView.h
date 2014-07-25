@@ -7,14 +7,55 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
+
+
 
 @interface GameView : UIView
-@property (retain, nonatomic) IBOutlet UIImageView *food;
-@property (retain, nonatomic) IBOutlet UILabel *scoreLabel;
-@property (retain, nonatomic) IBOutlet UILabel *lifeLabel;
-@property (retain, nonatomic) IBOutlet UIImageView *floor;
-@property (retain, nonatomic) IBOutlet UIImageView *basket;
--(void)printSomething;
--(void)makeFoodFall;
--(void)tapRecognizer;
+
+@property (retain, nonatomic) NSMutableArray *foodArray;
+@property (retain, nonatomic) UIView *floor;
+@property (retain, nonatomic) UIView *basket;
+@property (retain, nonatomic) UIView *food;
+
+@property (retain, nonatomic) UILongPressGestureRecognizer *basketMover;
+@property (retain, nonatomic) UITapGestureRecognizer *tap;
+
+@property (retain, nonatomic) UILabel *scoreLabel;
+@property (retain, nonatomic) UILabel *lifeLabel;
+
+@property (nonatomic) int screenHeight;
+@property (nonatomic) int screenWidth;
+@property (nonatomic) int screenHalf;
+
+@property (nonatomic) int basketHeight;
+@property (nonatomic) int basketWidth;
+@property (nonatomic) float basketOriginalXPosition;
+@property (nonatomic) float basketYPosition;
+
+@property (nonatomic) int foodRandomPosition;
+
+@property (nonatomic) int floorWidth;
+@property (nonatomic) int floorYPosition;
+
+@property (nonatomic) int life;
+@property (nonatomic) int score;
+
+@property (nonatomic) int labelHeight;
+@property (nonatomic) int labelWidth;
+
+- (void)createBasket;
+- (void)createFood;
+- (void)createFloor;
+- (void)createLabels;
+
+- (void)gameMeasures;
+
+- (BOOL)isFoodBasketColliding;
+- (BOOL)isFoodFloorColliding;
+
+- (void)decrementLife:(int)life;
+- (void)incrementScore:(int)score;
+
+- (void)destroyFood;
 @end
