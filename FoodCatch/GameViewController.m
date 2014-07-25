@@ -7,6 +7,7 @@
 //
 #import "GameViewController.h"
 #import "GameOverViewController.h"
+#import "GameView.h"
 
 // Basket Properties
 int const BASKET_WIDTH = 60;
@@ -44,9 +45,10 @@ int const LABEL_WIDTH = 90;
 
 @property (retain, nonatomic) UIView *floor;
 @property (retain, nonatomic) UIView *basket;
-@property (retain, nonatomic) UIView *food;
+//@property (retain, nonatomic) UIView *food;
 
 @property (retain, nonatomic) UILongPressGestureRecognizer *basketMover;
+@property (retain, nonatomic) UITapGestureRecognizer *tap;
 
 @property (retain, nonatomic) UILabel *scoreLabel;
 @property (retain, nonatomic) UILabel *lifeLabel;
@@ -71,6 +73,8 @@ int const LABEL_WIDTH = 90;
 @property (nonatomic) int labelHeight;
 @property (nonatomic) int labelWidth;
 
+@property (retain, nonatomic) GameView *gameView;
+
 @end
 
 @implementation GameViewController
@@ -91,7 +95,17 @@ int const LABEL_WIDTH = 90;
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self gameElements];
+    
+    self.gameView = [[GameView alloc] init];
+    
+    [self.view addSubview:self.gameView];
+    self.tap = [[UITapGestureRecognizer alloc]initWithTarget:self.gameView action:@selector(tapRecognizer)];
+    
+    [self.gameView addGestureRecognizer:self.tap];
+    [self.gameView makeFoodFall];
+    [self.gameView tapRecognizer];
+    [self.gameView printSomething];
+//    [self gameElements];
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,12 +116,13 @@ int const LABEL_WIDTH = 90;
 - (void)gameElements
 {
     // Call your game elements here
-    [self gameMeasures];
+//    [self gameMeasures];
     
-    [self createFloor];
-    [self createBasket];
+//    [self createFloor];
+//    [self createBasket];
+    
     [self createBasketMover];
-    [self createLabels];
+//    [self createLabels];
 }
 
 
@@ -130,11 +145,11 @@ int const LABEL_WIDTH = 90;
     self.score = SCORE;
     self.life = LIFE;
     
-    self.foodTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_TIMER_INTERVAL
-                                                      target:self
-                                                    selector:@selector(createFood)
-                                                    userInfo:nil
-                                                     repeats:YES];
+//    self.foodTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_TIMER_INTERVAL
+//                                                      target:self
+//                                                    selector:@selector(createFood)
+//                                                    userInfo:nil
+//                                                     repeats:YES];
     
     self.foodBasketCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_COLLISION_INTERVAL
                                                                      target:self
@@ -157,27 +172,27 @@ int const LABEL_WIDTH = 90;
     self.basketOriginalXPosition = self.basket.frame.origin.x;
 }
 
-- (void)createFood
-{
-    self.foodRandomPosition = arc4random() % self.screenWidth;
-    
-    // If the food will be falling outside the left side of the screen, move it inside the screen
-    if (self.foodRandomPosition < 0){
-        self.foodRandomPosition = FOOD_SIZE;;
-    }
-    
-    // If the food will be falling outside the right side of the screen, move it inside the screen
-    if(self.foodRandomPosition > self.screenWidth - FOOD_SIZE){
-        self.foodRandomPosition = self.screenWidth - FOOD_SIZE;
-    }
-    
-    self.food = [[[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, FOOD_SIZE, FOOD_SIZE)] autorelease];
-    self.food.backgroundColor = [UIColor brownColor];
-    [self.view addSubview:self.food];
-    
-    [self.foodArray addObject:self.food];
-    [self makeFoodFall];
-}
+//- (void)createFood
+//{
+//    self.foodRandomPosition = arc4random() % self.screenWidth;
+//    
+//    // If the food will be falling outside the left side of the screen, move it inside the screen
+//    if (self.foodRandomPosition < 0){
+//        self.foodRandomPosition = FOOD_SIZE;;
+//    }
+//    
+//    // If the food will be falling outside the right side of the screen, move it inside the screen
+//    if(self.foodRandomPosition > self.screenWidth - FOOD_SIZE){
+//        self.foodRandomPosition = self.screenWidth - FOOD_SIZE;
+//    }
+//    
+//    self.food = [[[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, FOOD_SIZE, FOOD_SIZE)] autorelease];
+//    self.food.backgroundColor = [UIColor brownColor];
+//    [self.view addSubview:self.food];
+//    
+//    [self.foodArray addObject:self.food];
+//    [self makeFoodFall];
+//}
 
 - (void)createFloor
 {
@@ -198,19 +213,17 @@ int const LABEL_WIDTH = 90;
 
 #pragma mark - Element Animators
 
-- (void)makeFoodFall
-{
-    [UIView animateWithDuration:FOOD_FALL_ANIMATION_DURATION animations:^{
-        self.food.frame = CGRectMake(self.foodRandomPosition, self.screenHeight, FOOD_SIZE, FOOD_SIZE);
-    }];
-}
+//- (void)makeFoodFall
+//{
+//    [UIView animateWithDuration:FOOD_FALL_ANIMATION_DURATION animations:^{
+//        self.food.frame = CGRectMake(self.foodRandomPosition, self.screenHeight, FOOD_SIZE, FOOD_SIZE);
+//    }];
+//}
 
 - (void)moveBasket:(UILongPressGestureRecognizer *)gesture
 {
     if (gesture.state == UIGestureRecognizerStateChanged) {
-        
         NSInteger touchCount = [gesture numberOfTouches];
-        
         for (NSInteger t = 0; t < touchCount; t++) {
             CGPoint point = [gesture locationOfTouch:t inView:gesture.view];
             
@@ -233,32 +246,32 @@ int const LABEL_WIDTH = 90;
 
 #pragma mark - Collision Checks
 
-- (void)isFoodBasketColliding
-{
-    // If the presentation layer of the food and the basket collides, the player scores
-    if(CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.basket.layer presentationLayer]frame])){
-        self.score += 1;
-        [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.score]];
-        
-        [self.food.layer removeAllAnimations];  // Stop the food from falling in the ground
-        [self.food removeFromSuperview];        // Remove the food from the screen
-    }
-}
+//- (void)isFoodBasketColliding
+//{
+//    // If the presentation layer of the food and the basket collides, the player scores
+//    if(CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.basket.layer presentationLayer]frame])){
+//        self.score += 1;
+//        [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.score]];
+//        
+//        [self.food.layer removeAllAnimations];  // Stop the food from falling in the ground
+//        [self.food removeFromSuperview];        // Remove the food from the screen
+//    }
+//}
 
-- (void)isFoodFloorColliding
-{
-    // Check if life is 0
-    [self gameOver];
-    
-    // If the presentation layer of the food and the floor collides, the player looses a life
-    if(CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.floor.layer presentationLayer] frame])){
-        self.life -=1;
-        [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", self.life]];
-        
-        [self.food removeFromSuperview];
-        [self.food.layer removeAllAnimations];
-    }
-}
+//- (void)isFoodFloorColliding
+//{
+//    // Check if life is 0
+//    [self gameOver];
+//    
+//    // If the presentation layer of the food and the floor collides, the player looses a life
+//    if(CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.floor.layer presentationLayer] frame])){
+//        self.life -=1;
+//        [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", self.life]];
+//        
+//        [self.food removeFromSuperview];
+//        [self.food.layer removeAllAnimations];
+//    }
+//}
 
 #pragma mark - Game Over Events
 
@@ -280,7 +293,7 @@ int const LABEL_WIDTH = 90;
     [self.foodFloorCollisionTimer invalidate];
     
     [self.basket removeFromSuperview];
-    [self.food removeFromSuperview];
+//    [self.food removeFromSuperview];
     [self.floor removeFromSuperview];
     [self.lifeLabel removeFromSuperview];
     [self.scoreLabel removeFromSuperview];
