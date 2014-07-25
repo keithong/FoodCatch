@@ -60,8 +60,6 @@ int const LABEL_WIDTH = 90;
 @property (nonatomic) float basketOriginalXPosition;
 @property (nonatomic) float basketYPosition;
 
-@property (nonatomic) int foodHeight;
-@property (nonatomic) int foodWidth;
 @property (nonatomic) int foodRandomPosition;
 
 @property (nonatomic) int floorWidth;
@@ -126,10 +124,6 @@ int const LABEL_WIDTH = 90;
 
     self.basketYPosition = self.screenHeight - (BASKET_HEIGHT + BASKET_FLOOR_GAP);
     
-    self.foodWidth = FOOD_SIZE;
-    self.foodHeight = FOOD_SIZE;
-
-    
     self.floorWidth = self.screenWidth;
     self.floorYPosition = self.screenHeight - FLOOR_HEIGHT;
     
@@ -169,15 +163,15 @@ int const LABEL_WIDTH = 90;
     
     // If the food will be falling outside the left side of the screen, move it inside the screen
     if (self.foodRandomPosition < 0){
-        self.foodRandomPosition = self.foodWidth;;
+        self.foodRandomPosition = FOOD_SIZE;;
     }
     
     // If the food will be falling outside the right side of the screen, move it inside the screen
-    if(self.foodRandomPosition > self.screenWidth - self.foodWidth){
-        self.foodRandomPosition = self.screenWidth - self.foodWidth;
+    if(self.foodRandomPosition > self.screenWidth - FOOD_SIZE){
+        self.foodRandomPosition = self.screenWidth - FOOD_SIZE;
     }
     
-    self.food = [[[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, self.foodWidth, self.foodHeight)] autorelease];
+    self.food = [[[UIView alloc] initWithFrame:CGRectMake(self.foodRandomPosition, 0, FOOD_SIZE, FOOD_SIZE)] autorelease];
     self.food.backgroundColor = [UIColor brownColor];
     [self.view addSubview:self.food];
     
@@ -207,7 +201,7 @@ int const LABEL_WIDTH = 90;
 - (void)makeFoodFall
 {
     [UIView animateWithDuration:FOOD_FALL_ANIMATION_DURATION animations:^{
-        self.food.frame = CGRectMake(self.foodRandomPosition, self.screenHeight, self.foodWidth, self.foodHeight);
+        self.food.frame = CGRectMake(self.foodRandomPosition, self.screenHeight, FOOD_SIZE, FOOD_SIZE);
     }];
 }
 
