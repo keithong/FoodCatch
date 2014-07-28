@@ -9,17 +9,12 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-
-
 @interface GameView : UIView
 
 @property (retain, nonatomic) NSMutableArray *foodArray;
 @property (retain, nonatomic) UIView *floor;
 @property (retain, nonatomic) UIView *basket;
 @property (retain, nonatomic) UIView *food;
-
-@property (retain, nonatomic) UILongPressGestureRecognizer *basketMover;
-@property (retain, nonatomic) UITapGestureRecognizer *tap;
 
 @property (retain, nonatomic) UILabel *scoreLabel;
 @property (retain, nonatomic) UILabel *lifeLabel;
@@ -37,9 +32,6 @@
 
 @property (nonatomic) int floorWidth;
 @property (nonatomic) int floorYPosition;
-
-@property (nonatomic) int life;
-@property (nonatomic) int score;
 
 @property (nonatomic) int labelHeight;
 @property (nonatomic) int labelWidth;
@@ -59,4 +51,5 @@
 
 - (void)destroyFood;
 - (void)destroyGameElements;
+
 @end

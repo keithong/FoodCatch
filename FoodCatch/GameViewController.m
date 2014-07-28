@@ -77,14 +77,15 @@ float const FOOD_COLLISION_INTERVAL = .05;
     self.life = INITIAL_LIFE;
     
     [self.gameView gameMeasures];
+    
     [self gameTimers];
+    
     [self createFoodInVC];
     [self createBasketInVC];
-    
-    [self createBasketMover];
-    
     [self createFloorInVC];
     [self createLabelsInVC];
+    
+    [self createBasketMover];
 }
 
 - (void)createFoodInVC

@@ -9,7 +9,6 @@
 #import "GameView.h"
 
 // Basket Properties
-
 int const BASKET_WIDTH = 60;
 int const BASKET_HEIGHT = 20;
 int const BASKET_FLOOR_GAP = 60;
@@ -141,6 +140,8 @@ int const LABEL_WIDTH = 90;
 
 - (void)destroyGameElements
 {
+    self.foodArray  = nil;
+
     [self.basket removeFromSuperview];
     [self.food removeFromSuperview];
     [self.floor removeFromSuperview];
