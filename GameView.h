@@ -58,4 +58,5 @@
 - (void)incrementScore:(int)score;
 
 - (void)destroyFood;
+- (void)destroyGameElements;
 @end

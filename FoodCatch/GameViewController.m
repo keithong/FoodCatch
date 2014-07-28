@@ -11,7 +11,11 @@
 #import "GameView.h"
 #import "GameModel.h"
 
+int const INITIAL_SCORE = 0;
+int const INITIAL_LIFE = 3;
+
 @interface GameViewController ()
+
 @property (retain, nonatomic) UILongPressGestureRecognizer *basketMover;
 
 @property (retain, nonatomic) NSTimer *foodTimer;
@@ -23,6 +27,7 @@
 
 @property (nonatomic)int score;
 @property (nonatomic)int life;
+
 @end
 
 @implementation GameViewController
@@ -47,9 +52,8 @@
     self.gameView = [[GameView alloc] initWithFrame:self.gameView.frame];
     
     [self.view addSubview:self.gameView];
-
+    self.gameModel = [[GameModel alloc] initWithScore:INITIAL_SCORE life:INITIAL_LIFE];
     [self gameElements];
-    self.gameModel = [[GameModel alloc] initWithScore:self.score life:self.life];
 }
 
 
@@ -63,8 +67,8 @@
 - (void)gameElements
 {
     // Call your game elements here
-    self.score = 0;
-    self.life = 3;
+    self.score = INITIAL_SCORE;
+    self.life = INITIAL_LIFE;
     
     [self.gameView gameMeasures];
     [self gameTimers];
@@ -98,6 +102,10 @@
 - (void)createLabelsInVC
 {
     [self.gameView createLabels];
+    
+    [self.gameView.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", [self getLifeFromModel]]];
+    [self.gameView.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", [self getScoreFromModel]]];
+
     [self.gameView addSubview:self.gameView.scoreLabel];
     [self.gameView addSubview:self.gameView.lifeLabel];
 }
@@ -130,26 +138,36 @@
     if([self.gameView isFoodBasketColliding]){
         self.score += 1;
         [self.gameModel setScore:self.score];
-        [self.gameView incrementScore:self.gameModel.playerScore];
+        [self.gameView incrementScore:[self getScoreFromModel]];
         [self.gameView destroyFood];
     }
 }
 
 - (void)foodFloorCollision
 {
+    [self gameOver];
     if([self.gameView isFoodFloorColliding]){
         self.life -= 1;
         [self.gameModel setLife:self.life];
-        [self.gameView decrementLife:self.gameModel.playerLife];
-        
+        [self.gameView decrementLife:[self getLifeFromModel]];
         [self.gameView destroyFood];
     }
+}
+
+- (int)getScoreFromModel
+{
+    return self.gameModel.playerScore;
+}
+
+- (int)getLifeFromModel
+{
+    return self.gameModel.playerLife;
 }
 
 - (void)createBasketMover
 {
     self.basketMover = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(moveBasket:)];
-    self.basketMover.minimumPressDuration = .0000001;
+    self.basketMover.minimumPressDuration = .000000001;
     [self.view addGestureRecognizer:self.basketMover];
 }
 
@@ -172,26 +190,32 @@
 
 - (void)gameOver
 {
-    if (self.life == 0){
+    if ([self getLifeFromModel] == 0){
         GameOverViewController *gameOverVC = [[GameOverViewController alloc]init];
         gameOverVC.scoreToPass = self.score;
-//        [self destroyGameElements];
+        [self destroyViewControllerElements];
         [self.navigationController pushViewController:gameOverVC animated:NO];
         [gameOverVC release];
+        return;
     }
 }
 
+- (void)destroyViewControllerElements
+{
+    [self.foodTimer invalidate];
+    [self.foodBasketCollisionTimer invalidate];
+    [self.foodFloorCollisionTimer invalidate];
+    
+    
+    [self.gameModel setScore:INITIAL_SCORE];
+    [self.gameModel setLife:INITIAL_LIFE];
+    
+    [self.gameView destroyGameElements];
+}
 
 
 - (void)dealloc
 {
-//    self.basket = nil;
-//    self.floor = nil;
-//    self.foodArray = nil;
-//    self.scoreLabel = nil;
-//    self.lifeLabel = nil;
-//    self.basketMover = nil;
-    
     [super dealloc];
 }
 

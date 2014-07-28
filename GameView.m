@@ -61,10 +61,6 @@ int const LABEL_WIDTH = 90;
     self.floorWidth = self.screenWidth;
     self.floorYPosition = self.screenHeight - FLOOR_HEIGHT;
     
-    self.score = SCORE;
-    self.life = LIFE;
-    
-    
 }
 
 - (void)createBasket
@@ -94,6 +90,7 @@ int const LABEL_WIDTH = 90;
 
     [self.foodArray addObject:self.food];
     [self makeFoodFall];
+    
 }
 
 - (void)createFloor
@@ -105,8 +102,6 @@ int const LABEL_WIDTH = 90;
 {
     self.scoreLabel = [[[UILabel alloc]initWithFrame:CGRectMake(LABEL_WIDTH, 0, LABEL_HEIGHT, LABEL_WIDTH)] autorelease];
     self.lifeLabel = [[[UILabel alloc]initWithFrame:CGRectMake(self.screenWidth - LABEL_WIDTH, 0, LABEL_HEIGHT, LABEL_WIDTH)] autorelease];
-    [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", self.life]];
-    [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", self.score]];
     
 }
 
@@ -132,17 +127,8 @@ int const LABEL_WIDTH = 90;
 }
 - (void)destroyFood
 {
-    // Check if life is 0
-//    [self gameOver];
-
-    // If the presentation layer of the food and the floor collides, the player looses a life
-    //if(CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.floor.layer presentationLayer] frame])){
-        
-    //[self decrementLife:life];
-    
-        [self.food removeFromSuperview];
-        [self.food.layer removeAllAnimations];
-    //}
+    [self.food removeFromSuperview];
+    [self.food.layer removeAllAnimations];
 }
 
 - (void)incrementScore:(int)score
@@ -157,19 +143,13 @@ int const LABEL_WIDTH = 90;
 
 #pragma mark - Game Over Events
 
-
 - (void)destroyGameElements
 {
-//    [self.foodTimer invalidate];
-//    [self.foodBasketCollisionTimer invalidate];
-//    [self.foodFloorCollisionTimer invalidate];
-    
     [self.basket removeFromSuperview];
     [self.food removeFromSuperview];
     [self.floor removeFromSuperview];
     [self.lifeLabel removeFromSuperview];
     [self.scoreLabel removeFromSuperview];
-//    [self.view removeFromSuperview];
     
     self.life = LIFE;
     self.score = SCORE;
