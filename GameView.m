@@ -15,8 +15,6 @@ int const BASKET_HEIGHT = 20;
 int const BASKET_FLOOR_GAP = 60;
 int const BASKET_MOVE_INTERVAL = 10;
 
-float const BASKET_MINIMUM_PRESS_DURATION = .0000000000001;
-
 // Food Properties
 int const FOOD_SIZE = 15;
 float const FOOD_FALL_ANIMATION_DURATION = .6;
@@ -24,14 +22,7 @@ float const FOOD_FALL_ANIMATION_DURATION = .6;
 // Floor Property
 int const FLOOR_HEIGHT = 1;
 
-// Timers Properties
-float const FOOD_TIMER_INTERVAL = .6;
-float const FOOD_COLLISION_INTERVAL = .05;
-
-// Labels Properties
-int const SCORE = 0;
-int const LIFE = 3;
-
+// Label Properties
 int const LABEL_HEIGHT = 80;
 int const LABEL_WIDTH = 90;
 
@@ -46,6 +37,7 @@ int const LABEL_WIDTH = 90;
     return self;
 }
 
+#pragma mark - Game Elements
 
 - (void)gameMeasures
 {
@@ -55,6 +47,10 @@ int const LABEL_WIDTH = 90;
     self.screenWidth = [UIScreen mainScreen].bounds.size.width;
     self.screenHeight = [UIScreen mainScreen].bounds.size.height;
     self.screenHalf = self.screenWidth/2;
+    
+    // Defining this for the view controller
+    self.basketWidth = BASKET_WIDTH;
+    self.basketHeight = BASKET_HEIGHT;
     
     self.basketYPosition = self.screenHeight - (BASKET_HEIGHT + BASKET_FLOOR_GAP);
     
@@ -68,7 +64,6 @@ int const LABEL_WIDTH = 90;
     self.basket = [[[UIView alloc]initWithFrame:CGRectMake(self.screenHalf, self.basketYPosition, BASKET_WIDTH, BASKET_HEIGHT)] autorelease];
     self.basket.backgroundColor = [UIColor grayColor];
     self.basketOriginalXPosition = self.basket.frame.origin.x;
-   
 }
 
 - (void)createFood
@@ -105,7 +100,7 @@ int const LABEL_WIDTH = 90;
     
 }
 
-#pragma mark - Element Animators
+#pragma mark - Food Animator
 
 - (void)makeFoodFall
 {
@@ -125,6 +120,7 @@ int const LABEL_WIDTH = 90;
 {
     return CGRectIntersectsRect([[self.food.layer presentationLayer] frame], [[self.basket.layer presentationLayer]frame]);
 }
+
 - (void)destroyFood
 {
     [self.food removeFromSuperview];
@@ -150,20 +146,7 @@ int const LABEL_WIDTH = 90;
     [self.floor removeFromSuperview];
     [self.lifeLabel removeFromSuperview];
     [self.scoreLabel removeFromSuperview];
-    
-    self.life = LIFE;
-    self.score = SCORE;
 }
-
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
-}
-*/
 
 - (void)dealloc
 {

@@ -11,8 +11,14 @@
 #import "GameView.h"
 #import "GameModel.h"
 
+float const BASKET_MINIMUM_PRESS_DURATION = .0000000000001;
+
 int const INITIAL_SCORE = 0;
 int const INITIAL_LIFE = 3;
+
+// Timers Properties
+float const FOOD_TIMER_INTERVAL = .6;
+float const FOOD_COLLISION_INTERVAL = .05;
 
 @interface GameViewController ()
 
@@ -49,10 +55,10 @@ int const INITIAL_LIFE = 3;
 {
     [super viewWillAppear:animated];
     
-    self.gameView = [[GameView alloc] initWithFrame:self.gameView.frame];
-    
+    self.gameView = [[[GameView alloc] initWithFrame:self.gameView.frame] autorelease];
     [self.view addSubview:self.gameView];
-    self.gameModel = [[GameModel alloc] initWithScore:INITIAL_SCORE life:INITIAL_LIFE];
+    
+    self.gameModel = [[[GameModel alloc] initWithScore:INITIAL_SCORE life:INITIAL_LIFE] autorelease];
     [self gameElements];
 }
 
@@ -112,26 +118,27 @@ int const INITIAL_LIFE = 3;
 
 - (void)gameTimers
 {
-    self.foodTimer = [NSTimer
-                      scheduledTimerWithTimeInterval:.6
-                      target:self
-                      selector:@selector(createFoodInVC)
-                      userInfo:nil
-                      repeats:YES];
+    self.foodTimer = [NSTimer   scheduledTimerWithTimeInterval:FOOD_TIMER_INTERVAL
+                                                        target:self
+                                                      selector:@selector(createFoodInVC)
+                                                      userInfo:nil
+                                                       repeats:YES];
     
     
-    self.foodBasketCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:.05
+    self.foodBasketCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_COLLISION_INTERVAL
                                                                      target:self
                                                                    selector:@selector(foodBasketCollision)
                                                                    userInfo:nil
                                                                     repeats:YES];
     
-    self.foodFloorCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:.05
+    self.foodFloorCollisionTimer = [NSTimer scheduledTimerWithTimeInterval:FOOD_COLLISION_INTERVAL
                                                                     target:self
                                                                   selector:@selector(foodFloorCollision)
                                                                   userInfo:nil
                                                                    repeats:YES];
 }
+
+#pragma mark - Collision Checks
 
 - (void)foodBasketCollision
 {
@@ -164,10 +171,12 @@ int const INITIAL_LIFE = 3;
     return self.gameModel.playerLife;
 }
 
+#pragma mark - Basket Mover
+
 - (void)createBasketMover
 {
     self.basketMover = [[UILongPressGestureRecognizer alloc]initWithTarget:self action:@selector(moveBasket:)];
-    self.basketMover.minimumPressDuration = .000000001;
+    self.basketMover.minimumPressDuration = BASKET_MINIMUM_PRESS_DURATION;
     [self.view addGestureRecognizer:self.basketMover];
 }
 
@@ -178,15 +187,17 @@ int const INITIAL_LIFE = 3;
         for (NSInteger t = 0; t < touchCount; t++) {
             CGPoint point = [gesture locationOfTouch:t inView:gesture.view];
             
-            // Check if the basket is already at the screen bounds
-            if(point.x < self.gameView.screenWidth - 60){
-                self.gameView.basket.frame = CGRectMake(point.x, self.gameView.basketYPosition, 60, 20);
+            // Check if the basket is already at the left or right screen bounds
+            if(point.x < self.gameView.screenWidth - self.gameView.basketWidth){
+                self.gameView.basket.frame = CGRectMake(point.x, self.gameView.basketYPosition, self.gameView.basketWidth, self.gameView.basketHeight);
                 return;
             }
             
         }
     }
 }
+
+#pragma mark - Game Over Events
 
 - (void)gameOver
 {
@@ -205,7 +216,6 @@ int const INITIAL_LIFE = 3;
     [self.foodTimer invalidate];
     [self.foodBasketCollisionTimer invalidate];
     [self.foodFloorCollisionTimer invalidate];
-    
     
     [self.gameModel setScore:INITIAL_SCORE];
     [self.gameModel setLife:INITIAL_LIFE];
