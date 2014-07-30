@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface GameOverViewController : UIViewController
+@interface GameOverViewController : UIViewController <UIAlertViewDelegate>
 
 @property (nonatomic) int scoreToPass;
 

@@ -65,7 +65,7 @@
                                UIAlertView *errorConnecting = [[UIAlertView alloc]
                                                                initWithTitle:@"Error"
                                                                message:@"Failed connect. Please try again."
-                                                               delegate:self
+                                                               delegate:nil
                                                                cancelButtonTitle:@"OK"
                                                                otherButtonTitles:nil];
                                [errorConnecting show];

@@ -18,7 +18,7 @@
 @property (retain, nonatomic) UIAlertView *scoreMessage;
 
 @property (retain, nonatomic) NSString *scorePath;
-@property (retain, nonatomic) NSMutableDictionary *newScore;
+@property (retain, nonatomic) NSMutableDictionary *theNewScore;
 @property (retain, nonatomic) NSMutableArray *scoreArray;
 
 @end
@@ -67,13 +67,18 @@
 - (void)writeScore
 {
     NSString *scoreToString = [NSString stringWithFormat:@"%d",self.scoreToPass];
+    NSString *playerNameFromAlertView = [self.scoreMessage textFieldAtIndex:0].text;
+    self.theNewScore = [NSMutableDictionary dictionary];
     
-    self.newScore = [NSMutableDictionary dictionary];
-    
-    [self.newScore setObject:[self.scoreMessage textFieldAtIndex:0].text forKey:@"playerName"];
-    [self.newScore setObject:scoreToString forKey:@"playerScore"];
+    // If the user didn't input any name. Do not continue writing the new score.
+    if((!playerNameFromAlertView) || ([playerNameFromAlertView  isEqual: @""])){
+        [self viewScoreMessage];
+        return;
+    }
+    [self.theNewScore setObject:playerNameFromAlertView forKey:@"playerName"];
+    [self.theNewScore setObject:scoreToString forKey:@"playerScore"];
 
-    [self.scoreArray addObject:self.newScore];
+    [self.scoreArray addObject:self.theNewScore];
     [self.scoreArray writeToFile:self.scorePath atomically:YES];
 
 }
@@ -102,7 +107,7 @@
 - (void)dealloc
 {
     self.scoreMessage = nil;
-    self.newScore = nil;
+    self.theNewScore = nil;
     self.scoreArray = nil;
     self.btnPlayAgain = nil;
     self.btnMainMenu = nil;
