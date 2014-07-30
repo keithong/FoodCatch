@@ -46,8 +46,8 @@
 - (BOOL)isFoodBasketColliding;
 - (BOOL)isFoodFloorColliding;
 
-- (void)decrementLife:(int)life;
-- (void)incrementScore:(int)score;
+- (void)decrementLife:(NSInteger)life;
+- (void)incrementScore:(NSInteger)score;
 
 - (void)destroyFood;
 - (void)destroyGameElements;

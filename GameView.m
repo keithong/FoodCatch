@@ -126,14 +126,14 @@ int const LABEL_WIDTH = 90;
     [self.food.layer removeAllAnimations];
 }
 
-- (void)incrementScore:(int)score
+- (void)incrementScore:(NSInteger)score
 {
-    [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", score]];
+    [self.scoreLabel setText:[NSString stringWithFormat:@"Score: %tu", score]];
 }
 
-- (void)decrementLife:(int)life
+- (void)decrementLife:(NSInteger)life
 {
-    [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", life]];
+    [self.lifeLabel setText:[NSString stringWithFormat:@"Life: %tu", life]];
 }
 
 #pragma mark - Game Over Events

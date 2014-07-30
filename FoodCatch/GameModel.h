@@ -11,7 +11,7 @@
 @interface GameModel : NSObject
 @property (nonatomic) int playerScore;
 @property (nonatomic) int playerLife;
--(id)initWithScore:(int)score life:(int)life;
--(void)setScore:(int)score;
--(void)setLife:(int)life;
+-(id)initWithScore:(NSInteger)score life:(NSInteger)life;
+-(void)setScore:(NSInteger)score;
+-(void)setLife:(NSInteger)life;
 @end
