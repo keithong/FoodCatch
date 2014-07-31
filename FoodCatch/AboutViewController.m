@@ -65,13 +65,21 @@
                                UIAlertView *errorConnecting = [[UIAlertView alloc]
                                                                initWithTitle:@"Error"
                                                                message:@"Failed connect. Please try again."
-                                                               delegate:nil
+                                                               delegate:self
                                                                cancelButtonTitle:@"OK"
                                                                otherButtonTitles:nil];
                                [errorConnecting show];
                                [errorConnecting release];
                                errorConnecting = nil;
                            }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)dealloc

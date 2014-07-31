@@ -8,5 +8,5 @@
 
 #import <Foundation/Foundation.h>
 
-@interface JsonViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@interface JsonViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UIAlertViewDelegate>
 @end

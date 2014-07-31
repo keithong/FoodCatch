@@ -49,7 +49,7 @@
 {
     [super viewDidLoad];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
-    [self fetchJson];
+    [self attemptConnect];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -88,6 +88,41 @@
     cell.labelAppArtist.text = jsonModel.modelAppArtist;
     
     return cell;
+}
+
+- (void)attemptConnect
+{
+    // Check the internet connection first
+    NSString *requestString = @"https://itunes.apple.com/ph";
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:requestString]];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *connectionError) {
+                               
+                               if (!connectionError) {
+                                   [self fetchJson];
+                                   return;
+                               }
+                               
+                               // Show an error pop-up message if there's no internet connection
+                               UIAlertView *errorConnecting = [[UIAlertView alloc]
+                                                               initWithTitle:@"Error"
+                                                               message:@"Failed connect. Please try again."
+                                                               delegate:self
+                                                               cancelButtonTitle:@"OK"
+                                                               otherButtonTitles:nil];
+                               [errorConnecting show];
+                               [errorConnecting release];
+                               errorConnecting = nil;
+                           }];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0)
+    {
+        [self.navigationController popToRootViewControllerAnimated:YES];
+    }
 }
 
 - (void)fetchJson
