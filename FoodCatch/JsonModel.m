@@ -16,7 +16,6 @@
     if (self) {
         self.modelAppName = [dict objectForKey: @"appName"];
         self.modelAppArtist = [dict objectForKey: @"appArtist"];
-
     }
     return self;
 }

@@ -8,7 +8,6 @@
 
 #import "JsonViewController.h"
 #import "JsonModel.h"
-#import "JsonView.h"
 
 @interface JsonViewController()
 
@@ -24,35 +23,39 @@
 @property (retain, nonatomic) NSString *appName;
 @property (retain, nonatomic) NSString *appArtist;
 
+@property (retain, nonatomic) NSString *appNameForCell;
+@property (retain, nonatomic) NSString *appArtistForCell;
+
 @end
 
 @implementation JsonViewController
 
-- (id)initWithStyle:(UITableViewStyle)style
+- (id)init
 {
-    self = [super initWithStyle:style];
-    if (self){
+    self = [super initWithStyle:UITableViewStylePlain];
+    if(self){
         NSURLSessionConfiguration *sessionConfiguration = [NSURLSessionConfiguration defaultSessionConfiguration];
         self.session = [NSURLSession sessionWithConfiguration:sessionConfiguration delegate:nil delegateQueue:nil];
-        
     }
     return self;
+}
+
+- (id)initWithStyle:(UITableViewStyle)style
+{
+    return [self init];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    UINib *nib = [UINib nibWithNibName:@"JsonView" bundle:nil];
-    
-    [self.tableView registerNib:nib forCellReuseIdentifier:@"JsonView"];
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"UITableViewCell"];
     [self fetchJson];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [self.navigationController setNavigationBarHidden:NO]; 
+    [self.navigationController setNavigationBarHidden:NO];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -62,21 +65,17 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    JsonView *cell = [tableView dequeueReusableCellWithIdentifier:@"JsonView" forIndexPath:indexPath];
-    NSLog(@"%@", cell);
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
     NSDictionary *cellIdentifier = [self.fixedEntry objectAtIndex:indexPath.row];
     
     JsonModel *jsonModel = [[[JsonModel alloc]initWithDictionary:cellIdentifier]autorelease];
-//    
-//    cell.lblAppName.text = jsonModel.modelAppName;
-//    cell.lblAppArtist.text = jsonModel.modelAppArtist;
     
+    cell.textLabel.text = jsonModel.modelAppName;
     return cell;
 }
 
 - (void)fetchJson
 {
-
     NSString *requestString = @"https://itunes.apple.com/ph/rss/topfreeapplications/limit=50/json";
     NSURL *url = [NSURL URLWithString:requestString];
     

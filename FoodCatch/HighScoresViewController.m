@@ -22,8 +22,6 @@ int const NUM_OF_SCORES = 10;
 @property (retain, nonatomic) NSMutableArray *scoreArray;
 @property (retain, nonatomic) NSMutableDictionary *cellIdentifier;
 
-- (id)initWithScoreModel:(ScoreModel *)scoreModel;
-
 @end
 
 @implementation HighScoresViewController
@@ -41,17 +39,6 @@ int const NUM_OF_SCORES = 10;
     return [self init];
 }
 
-- (id)initWithScoreModel:(ScoreModel *)scoreModel
-{
-    self = [super init];
-    if(self){
-        self.playerNameForCell = scoreModel.playerName;
-        self.playerScoreForCell = scoreModel.playerScore;
-    }
-    return self;
-}
-
-
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // We only want to see 10 recent players
@@ -67,18 +54,13 @@ int const NUM_OF_SCORES = 10;
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     
     // Sort the scores by who played recently
-    self.cellIdentifier = [[[self.scoreArray reverseObjectEnumerator] allObjects] objectAtIndex:indexPath.row];
-    
+    self.cellIdentifier = [[[self.scoreArray reverseObjectEnumerator] allObjects] objectAtIndex:indexPath.row];    
     ScoreModel *score = [[ScoreModel alloc]initWithDictionary:self.cellIdentifier];
     
-    HighScoresViewController *highScoreVC = [[HighScoresViewController alloc]initWithScoreModel:score];
+    cell.playerNameLabel.text = score.playerName;
+    cell.playerScoreLabel.text = score.playerScore;
+
     [score release];
-    
-    cell.playerNameLabel.text = highScoreVC.playerNameForCell;
-    cell.playerScoreLabel.text = highScoreVC.playerScoreForCell;
-
-    [highScoreVC release];
-
     return cell;
 }
 
