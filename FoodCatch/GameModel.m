@@ -9,6 +9,7 @@
 #import "GameModel.h"
 
 @implementation GameModel
+
 - (id)initWithScore:(NSInteger)score life:(NSInteger)life
 {
     self = [super init];
@@ -18,12 +19,15 @@
     }
     return self;
 }
+
 - (void)setScore:(NSInteger)score
 {
     self.playerScore = score;
 }
+
 - (void)setLife:(NSInteger)life
 {
     self.playerLife = life;
 }
+
 @end
