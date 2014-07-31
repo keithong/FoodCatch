@@ -10,8 +10,10 @@
 #import "AboutViewController.h"
 #import "GameViewController.h"
 #import "HighScoresViewController.h"
+#import "JsonViewController.h"
 
 @interface MainMenuViewController ()
+@property (retain, nonatomic) IBOutlet UIButton *btnJson;
 
 @property (assign, nonatomic) IBOutlet UIButton *btnAbout;
 @property (assign, nonatomic) IBOutlet UIButton *btnHighScore;
@@ -20,6 +22,12 @@
 @end
 
 @implementation MainMenuViewController
+- (IBAction)goToJson:(id)sender {
+    JsonViewController *jsonVC = [[JsonViewController alloc] init];
+    [self.navigationController pushViewController:jsonVC animated:NO];
+    [jsonVC release];
+    jsonVC = nil;
+}
 
 #pragma mark - Main Menu Button Actions
 
@@ -77,6 +85,7 @@
     self.btnHighScore = nil;
     self.btnPlay = nil;
     
+    [_btnJson release];
     [super dealloc];
 }
 
