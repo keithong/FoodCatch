@@ -8,6 +8,7 @@
 
 #import "JsonViewController.h"
 #import "JsonModel.h"
+#import "JsonCell.h"
 
 @interface JsonViewController()
 
@@ -18,7 +19,6 @@
 
 @property (retain, nonatomic) NSMutableArray *fixedEntry;
 @property (retain, nonatomic) NSArray *entry;
-
 
 @property (retain, nonatomic) NSString *appName;
 @property (retain, nonatomic) NSString *appArtist;
@@ -60,17 +60,33 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [self.entry count];
+    // Use the fixed entry as your return count
+    return [self.fixedEntry count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UITableViewCell" forIndexPath:indexPath];
+    NSString *cellName = @"JsonCell";
+    
+    UINib *nib = [UINib nibWithNibName:cellName bundle:nil];
+    [self.tableView registerNib:nib forCellReuseIdentifier:cellName];
+    
+    JsonCell *cell = [tableView dequeueReusableCellWithIdentifier:cellName forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    // If the system failed to create the cell, create a new one
+    if (cell == nil) {
+        NSArray *array = [[NSBundle mainBundle]loadNibNamed:cellName owner:self options:nil];
+        cell = [array objectAtIndex:0];
+    }
+    
     NSDictionary *cellIdentifier = [self.fixedEntry objectAtIndex:indexPath.row];
     
     JsonModel *jsonModel = [[[JsonModel alloc]initWithDictionary:cellIdentifier]autorelease];
     
-    cell.textLabel.text = jsonModel.modelAppName;
+    cell.labelAppName.text = jsonModel.modelAppName;
+    cell.labelAppArtist.text = jsonModel.modelAppArtist;
+    
     return cell;
 }
 
@@ -87,26 +103,25 @@
         self.entry = self.feed[@"entry"];
         
         self.fixedEntry = [NSMutableArray array];
-
-            for (int i = 0 ; i < [self.entry count]; i++) {
-                self.appDictionary = [NSMutableDictionary dictionary];
-                NSDictionary *dict = self.entry[i];
-                NSDictionary *imName = dict[@"im:name"];
-                NSDictionary *imArtist = dict[@"im:artist"];
-                self.appName = imName[@"label"];
-                self.appArtist = imArtist[@"label"];
-                
-                
-                [self.appDictionary setValue:self.appName forKey:@"appName"];
-                [self.appDictionary setValue:self.appArtist forKey:@"appArtist"];
-                [self.fixedEntry addObject:self.appDictionary];
-            }
         
+        // The JSON array has many dictionary inside it
+        // Search the whole JSON array for the app name and app artist
+        for (NSDictionary *dict in self.entry){
+            self.appDictionary = [NSMutableDictionary dictionary];
+            NSDictionary *imName = dict[@"im:name"];
+            NSDictionary *imArtist = dict[@"im:artist"];
+            self.appName = imName[@"label"];
+            self.appArtist = imArtist[@"label"];
+            
+            // Get only the app name and app artist from the JSON array
+            // And assign them to a new array for an easier search in the future
+            [self.appDictionary setValue:self.appName forKey:@"appName"];
+            [self.appDictionary setValue:self.appArtist forKey:@"appArtist"];
+            [self.fixedEntry addObject:self.appDictionary];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{[self.tableView reloadData];});
     }];
     [dataTask resume];
 }
-
-
 
 @end

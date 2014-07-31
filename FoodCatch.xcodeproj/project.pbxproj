@@ -16,6 +16,8 @@
 		F04A764D197784B000BD7058 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A764B197784B000BD7058 /* AboutViewController.xib */; };
 		F04A7650197786D900BD7058 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A764F197786D900BD7058 /* GameViewController.m */; };
 		F04BFE031981F0DA00BF8C39 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = F04BFE021981F0DA00BF8C39 /* GameView.m */; };
+		F0522B74198A2694009E0A26 /* JsonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0522B72198A2694009E0A26 /* JsonCell.m */; };
+		F0522B75198A2694009E0A26 /* JsonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0522B73198A2694009E0A26 /* JsonCell.xib */; };
 		F087FC0919826D8800B5054B /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F087FC0819826D8800B5054B /* GameModel.m */; };
 		F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C923C8197E407500CCC3CA /* GameOverViewController.m */; };
 		F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C923C9197E407500CCC3CA /* GameOverViewController.xib */; };
@@ -63,6 +65,9 @@
 		F04A764F197786D900BD7058 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
 		F04BFE011981F0DA00BF8C39 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
 		F04BFE021981F0DA00BF8C39 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		F0522B71198A2694009E0A26 /* JsonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonCell.h; sourceTree = "<group>"; };
+		F0522B72198A2694009E0A26 /* JsonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonCell.m; sourceTree = "<group>"; };
+		F0522B73198A2694009E0A26 /* JsonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JsonCell.xib; sourceTree = "<group>"; };
 		F087FC0719826D8800B5054B /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
 		F087FC0819826D8800B5054B /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
 		F0C923C7197E407500CCC3CA /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
@@ -155,10 +160,6 @@
 				F04A764B197784B000BD7058 /* AboutViewController.xib */,
 				F0D47FB9197780AA00BDD80C /* AppDelegate.h */,
 				F0D47FBA197780AA00BDD80C /* AppDelegate.m */,
-				F0EDA4541989DCF700B2AB91 /* JsonViewController.h */,
-				F0EDA4551989DCF700B2AB91 /* JsonViewController.m */,
-				F0EDA457198A03E000B2AB91 /* JsonModel.h */,
-				F0EDA458198A03E000B2AB91 /* JsonModel.m */,
 				F087FC0719826D8800B5054B /* GameModel.h */,
 				F087FC0819826D8800B5054B /* GameModel.m */,
 				F0C923C7197E407500CCC3CA /* GameOverViewController.h */,
@@ -172,6 +173,13 @@
 				F024B493197F440C001C9FD9 /* HighScoresViewController.h */,
 				F024B494197F440C001C9FD9 /* HighScoresViewController.m */,
 				F0D47FBC197780AA00BDD80C /* Images.xcassets */,
+				F0522B71198A2694009E0A26 /* JsonCell.h */,
+				F0522B72198A2694009E0A26 /* JsonCell.m */,
+				F0522B73198A2694009E0A26 /* JsonCell.xib */,
+				F0EDA457198A03E000B2AB91 /* JsonModel.h */,
+				F0EDA458198A03E000B2AB91 /* JsonModel.m */,
+				F0EDA4541989DCF700B2AB91 /* JsonViewController.h */,
+				F0EDA4551989DCF700B2AB91 /* JsonViewController.m */,
 				F04A76411977841B00BD7058 /* MainMenuViewController.h */,
 				F04A76421977841B00BD7058 /* MainMenuViewController.m */,
 				F04A76431977841B00BD7058 /* MainMenuViewController.xib */,
@@ -296,6 +304,7 @@
 				F0DD9249197E5C1600CC1652 /* HighScores.plist in Resources */,
 				F0D47FBD197780AA00BDD80C /* Images.xcassets in Resources */,
 				F04A764D197784B000BD7058 /* AboutViewController.xib in Resources */,
+				F0522B75198A2694009E0A26 /* JsonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,6 +336,7 @@
 				F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */,
 				F04A7650197786D900BD7058 /* GameViewController.m in Sources */,
 				F0EDA459198A03E000B2AB91 /* JsonModel.m in Sources */,
+				F0522B74198A2694009E0A26 /* JsonCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
