@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F024B495197F440C001C9FD9 /* HighScoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F024B494197F440C001C9FD9 /* HighScoresViewController.m */; };
+		F024B498197F5062001C9FD9 /* ScoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F024B497197F5062001C9FD9 /* ScoreCell.m */; };
+		F024B49A197F50A5001C9FD9 /* ScoreCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F024B499197F50A4001C9FD9 /* ScoreCell.xib */; };
+		F04A76441977841B00BD7058 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A76421977841B00BD7058 /* MainMenuViewController.m */; };
+		F04A76451977841B00BD7058 /* MainMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A76431977841B00BD7058 /* MainMenuViewController.xib */; };
+		F04A764C197784B000BD7058 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A764A197784B000BD7058 /* AboutViewController.m */; };
+		F04A764D197784B000BD7058 /* AboutViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F04A764B197784B000BD7058 /* AboutViewController.xib */; };
+		F04A7650197786D900BD7058 /* GameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F04A764F197786D900BD7058 /* GameViewController.m */; };
+		F04BFE031981F0DA00BF8C39 /* GameView.m in Sources */ = {isa = PBXBuildFile; fileRef = F04BFE021981F0DA00BF8C39 /* GameView.m */; };
+		F0522B74198A2694009E0A26 /* JsonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0522B72198A2694009E0A26 /* JsonCell.m */; };
+		F0522B75198A2694009E0A26 /* JsonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0522B73198A2694009E0A26 /* JsonCell.xib */; };
+		F087FC0919826D8800B5054B /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F087FC0819826D8800B5054B /* GameModel.m */; };
+		F0B745DD198B700800FF68CF /* JsonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EDA4551989DCF700B2AB91 /* JsonViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C923C8197E407500CCC3CA /* GameOverViewController.m */; };
+		F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C923C9197E407500CCC3CA /* GameOverViewController.xib */; };
 		F0D47FAB197780AA00BDD80C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAA197780AA00BDD80C /* Foundation.framework */; };
 		F0D47FAD197780AA00BDD80C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAC197780AA00BDD80C /* CoreGraphics.framework */; };
 		F0D47FAF197780AA00BDD80C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAE197780AA00BDD80C /* UIKit.framework */; };
@@ -19,6 +34,12 @@
 		F0D47FC6197780AB00BDD80C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAE197780AA00BDD80C /* UIKit.framework */; };
 		F0D47FCE197780AB00BDD80C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F0D47FCC197780AB00BDD80C /* InfoPlist.strings */; };
 		F0D47FD0197780AB00BDD80C /* FoodCatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = F0D47FCF197780AB00BDD80C /* FoodCatchTests.m */; };
+		F0DD9249197E5C1600CC1652 /* HighScores.plist in Resources */ = {isa = PBXBuildFile; fileRef = F0DD9248197E5C1600CC1652 /* HighScores.plist */; };
+		F0DD924C197E5D7C00CC1652 /* ScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DD924B197E5D7C00CC1652 /* ScoreModel.m */; };
+		F0EDA4561989DCF700B2AB91 /* JsonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EDA4551989DCF700B2AB91 /* JsonViewController.m */; };
+		F0EDA459198A03E000B2AB91 /* JsonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EDA458198A03E000B2AB91 /* JsonModel.m */; };
+		F0F96F2F198B681A00106AFC /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0F96F2C198B681A00106AFC /* SVProgressHUD.bundle */; };
+		F0F96F30198B681A00106AFC /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F96F2E198B681A00106AFC /* SVProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +53,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F024B493197F440C001C9FD9 /* HighScoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HighScoresViewController.h; sourceTree = "<group>"; };
+		F024B494197F440C001C9FD9 /* HighScoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HighScoresViewController.m; sourceTree = "<group>"; };
+		F024B496197F5062001C9FD9 /* ScoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreCell.h; sourceTree = "<group>"; };
+		F024B497197F5062001C9FD9 /* ScoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreCell.m; sourceTree = "<group>"; };
+		F024B499197F50A4001C9FD9 /* ScoreCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScoreCell.xib; sourceTree = "<group>"; };
+		F04A76411977841B00BD7058 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
+		F04A76421977841B00BD7058 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		F04A76431977841B00BD7058 /* MainMenuViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenuViewController.xib; sourceTree = "<group>"; };
+		F04A7649197784B000BD7058 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AboutViewController.h; sourceTree = "<group>"; };
+		F04A764A197784B000BD7058 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AboutViewController.m; sourceTree = "<group>"; };
+		F04A764B197784B000BD7058 /* AboutViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AboutViewController.xib; sourceTree = "<group>"; };
+		F04A764E197786D900BD7058 /* GameViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameViewController.h; sourceTree = "<group>"; };
+		F04A764F197786D900BD7058 /* GameViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameViewController.m; sourceTree = "<group>"; };
+		F04BFE011981F0DA00BF8C39 /* GameView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameView.h; sourceTree = "<group>"; };
+		F04BFE021981F0DA00BF8C39 /* GameView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameView.m; sourceTree = "<group>"; };
+		F0522B71198A2694009E0A26 /* JsonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonCell.h; sourceTree = "<group>"; };
+		F0522B72198A2694009E0A26 /* JsonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonCell.m; sourceTree = "<group>"; };
+		F0522B73198A2694009E0A26 /* JsonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JsonCell.xib; sourceTree = "<group>"; };
+		F087FC0719826D8800B5054B /* GameModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameModel.h; sourceTree = "<group>"; };
+		F087FC0819826D8800B5054B /* GameModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameModel.m; sourceTree = "<group>"; };
+		F0C923C7197E407500CCC3CA /* GameOverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameOverViewController.h; sourceTree = "<group>"; };
+		F0C923C8197E407500CCC3CA /* GameOverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameOverViewController.m; sourceTree = "<group>"; };
+		F0C923C9197E407500CCC3CA /* GameOverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameOverViewController.xib; sourceTree = "<group>"; };
 		F0D47FA7197780AA00BDD80C /* FoodCatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoodCatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F0D47FAA197780AA00BDD80C /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		F0D47FAC197780AA00BDD80C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,6 +92,17 @@
 		F0D47FCB197780AB00BDD80C /* FoodCatchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FoodCatchTests-Info.plist"; sourceTree = "<group>"; };
 		F0D47FCD197780AB00BDD80C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F0D47FCF197780AB00BDD80C /* FoodCatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FoodCatchTests.m; sourceTree = "<group>"; };
+		F0DD9248197E5C1600CC1652 /* HighScores.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HighScores.plist; sourceTree = "<group>"; };
+		F0DD924A197E5D7C00CC1652 /* ScoreModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScoreModel.h; sourceTree = "<group>"; };
+		F0DD924B197E5D7C00CC1652 /* ScoreModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScoreModel.m; sourceTree = "<group>"; };
+		F0EDA4541989DCF700B2AB91 /* JsonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonViewController.h; sourceTree = "<group>"; };
+		F0EDA4551989DCF700B2AB91 /* JsonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonViewController.m; sourceTree = "<group>"; };
+		F0EDA457198A03E000B2AB91 /* JsonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonModel.h; sourceTree = "<group>"; };
+		F0EDA458198A03E000B2AB91 /* JsonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonModel.m; sourceTree = "<group>"; };
+		F0F96F2B198B681A00106AFC /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		F0F96F2C198B681A00106AFC /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		F0F96F2D198B681A00106AFC /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		F0F96F2E198B681A00106AFC /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,9 +162,40 @@
 		F0D47FB0197780AA00BDD80C /* FoodCatch */ = {
 			isa = PBXGroup;
 			children = (
+				F0F96F2A198B681A00106AFC /* SVProgressHUD */,
+				F04A7649197784B000BD7058 /* AboutViewController.h */,
+				F04A764A197784B000BD7058 /* AboutViewController.m */,
+				F04A764B197784B000BD7058 /* AboutViewController.xib */,
 				F0D47FB9197780AA00BDD80C /* AppDelegate.h */,
 				F0D47FBA197780AA00BDD80C /* AppDelegate.m */,
+				F087FC0719826D8800B5054B /* GameModel.h */,
+				F087FC0819826D8800B5054B /* GameModel.m */,
+				F0C923C7197E407500CCC3CA /* GameOverViewController.h */,
+				F0C923C8197E407500CCC3CA /* GameOverViewController.m */,
+				F0C923C9197E407500CCC3CA /* GameOverViewController.xib */,
+				F04BFE011981F0DA00BF8C39 /* GameView.h */,
+				F04BFE021981F0DA00BF8C39 /* GameView.m */,
+				F04A764E197786D900BD7058 /* GameViewController.h */,
+				F04A764F197786D900BD7058 /* GameViewController.m */,
+				F0DD9248197E5C1600CC1652 /* HighScores.plist */,
+				F024B493197F440C001C9FD9 /* HighScoresViewController.h */,
+				F024B494197F440C001C9FD9 /* HighScoresViewController.m */,
 				F0D47FBC197780AA00BDD80C /* Images.xcassets */,
+				F0522B71198A2694009E0A26 /* JsonCell.h */,
+				F0522B72198A2694009E0A26 /* JsonCell.m */,
+				F0522B73198A2694009E0A26 /* JsonCell.xib */,
+				F0EDA457198A03E000B2AB91 /* JsonModel.h */,
+				F0EDA458198A03E000B2AB91 /* JsonModel.m */,
+				F0EDA4541989DCF700B2AB91 /* JsonViewController.h */,
+				F0EDA4551989DCF700B2AB91 /* JsonViewController.m */,
+				F04A76411977841B00BD7058 /* MainMenuViewController.h */,
+				F04A76421977841B00BD7058 /* MainMenuViewController.m */,
+				F04A76431977841B00BD7058 /* MainMenuViewController.xib */,
+				F024B496197F5062001C9FD9 /* ScoreCell.h */,
+				F024B497197F5062001C9FD9 /* ScoreCell.m */,
+				F024B499197F50A4001C9FD9 /* ScoreCell.xib */,
+				F0DD924A197E5D7C00CC1652 /* ScoreModel.h */,
+				F0DD924B197E5D7C00CC1652 /* ScoreModel.m */,
 				F0D47FB1197780AA00BDD80C /* Supporting Files */,
 			);
 			path = FoodCatch;
@@ -142,6 +228,18 @@
 				F0D47FCC197780AB00BDD80C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0F96F2A198B681A00106AFC /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				F0F96F2B198B681A00106AFC /* SVProgressHUD-Prefix.pch */,
+				F0F96F2C198B681A00106AFC /* SVProgressHUD.bundle */,
+				F0F96F2D198B681A00106AFC /* SVProgressHUD.h */,
+				F0F96F2E198B681A00106AFC /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = ../SVProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,8 +317,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F024B49A197F50A5001C9FD9 /* ScoreCell.xib in Resources */,
+				F0F96F2F198B681A00106AFC /* SVProgressHUD.bundle in Resources */,
+				F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */,
+				F04A76451977841B00BD7058 /* MainMenuViewController.xib in Resources */,
 				F0D47FB5197780AA00BDD80C /* InfoPlist.strings in Resources */,
+				F0DD9249197E5C1600CC1652 /* HighScores.plist in Resources */,
 				F0D47FBD197780AA00BDD80C /* Images.xcassets in Resources */,
+				F04A764D197784B000BD7058 /* AboutViewController.xib in Resources */,
+				F0522B75198A2694009E0A26 /* JsonCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,8 +344,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F04A76441977841B00BD7058 /* MainMenuViewController.m in Sources */,
+				F04A764C197784B000BD7058 /* AboutViewController.m in Sources */,
+				F0F96F30198B681A00106AFC /* SVProgressHUD.m in Sources */,
 				F0D47FBB197780AA00BDD80C /* AppDelegate.m in Sources */,
+				F024B495197F440C001C9FD9 /* HighScoresViewController.m in Sources */,
+				F024B498197F5062001C9FD9 /* ScoreCell.m in Sources */,
+				F0DD924C197E5D7C00CC1652 /* ScoreModel.m in Sources */,
+				F04BFE031981F0DA00BF8C39 /* GameView.m in Sources */,
 				F0D47FB7197780AA00BDD80C /* main.m in Sources */,
+				F0EDA4561989DCF700B2AB91 /* JsonViewController.m in Sources */,
+				F087FC0919826D8800B5054B /* GameModel.m in Sources */,
+				F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */,
+				F04A7650197786D900BD7058 /* GameViewController.m in Sources */,
+				F0EDA459198A03E000B2AB91 /* JsonModel.m in Sources */,
+				F0522B74198A2694009E0A26 /* JsonCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0B745DD198B700800FF68CF /* JsonViewController.m in Sources */,
 				F0D47FD0197780AB00BDD80C /* FoodCatchTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,7 +408,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -317,6 +436,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 			};
 			name = Debug;
 		};
@@ -327,7 +447,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -348,6 +468,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -437,6 +558,7 @@
 				F0D47FD5197780AB00BDD80C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F0D47FD6197780AB00BDD80C /* Build configuration list for PBXNativeTarget "FoodCatchTests" */ = {
 			isa = XCConfigurationList;
@@ -445,6 +567,7 @@
 				F0D47FD8197780AB00BDD80C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
