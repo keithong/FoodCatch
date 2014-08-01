@@ -7,6 +7,7 @@
 //
 
 #import "AboutViewController.h"
+#import "SVProgressHUD.h"
 
 @interface AboutViewController ()
 
@@ -27,7 +28,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [self connectToAds];
+    
+    [self showProgressHUD];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -39,6 +42,17 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
+}
+
+- (void)showProgressHUD
+{
+    [SVProgressHUD show];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        [self connectToAds];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+        });
+    });
 }
 
 - (void)connectToAds
