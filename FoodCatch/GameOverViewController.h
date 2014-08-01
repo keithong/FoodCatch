@@ -10,5 +10,6 @@
 
 @interface GameOverViewController : UIViewController <UIAlertViewDelegate>
 
-@property (nonatomic) int scoreToPass;
+@property (nonatomic) NSInteger scoreToPass;
+
 @end

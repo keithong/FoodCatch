@@ -12,6 +12,7 @@
 
 @property (retain, nonatomic) NSString *playerName;
 @property (retain, nonatomic) NSString *playerScore;
+
 - (id)initWithDictionary:(NSMutableDictionary *)dict;
 
 @end

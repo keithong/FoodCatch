@@ -13,8 +13,8 @@
 #import "JsonViewController.h"
 
 @interface MainMenuViewController ()
-@property (retain, nonatomic) IBOutlet UIButton *btnJson;
 
+@property (retain, nonatomic) IBOutlet UIButton *btnJson;
 @property (assign, nonatomic) IBOutlet UIButton *btnAbout;
 @property (assign, nonatomic) IBOutlet UIButton *btnHighScore;
 @property (assign, nonatomic) IBOutlet UIButton *btnPlay;

@@ -31,8 +31,8 @@ float const FOOD_COLLISION_INTERVAL = .05;
 @property (retain, nonatomic) GameView *gameView;
 @property (retain, nonatomic) GameModel *gameModel;
 
-@property (nonatomic)int score;
-@property (nonatomic)int life;
+@property (nonatomic) NSInteger score;
+@property (nonatomic) NSInteger life;
 
 @end
 
@@ -110,8 +110,8 @@ float const FOOD_COLLISION_INTERVAL = .05;
 {
     [self.gameView createLabels];
     
-    [self.gameView.lifeLabel setText:[NSString stringWithFormat:@"Life: %d", [self getLifeFromModel]]];
-    [self.gameView.scoreLabel setText:[NSString stringWithFormat:@"Score: %d", [self getScoreFromModel]]];
+    [self.gameView.lifeLabel setText:[NSString stringWithFormat:@"Life: %tu", [self getLifeFromModel]]];
+    [self.gameView.scoreLabel setText:[NSString stringWithFormat:@"Score: %tu", [self getScoreFromModel]]];
 
     [self.gameView addSubview:self.gameView.scoreLabel];
     [self.gameView addSubview:self.gameView.lifeLabel];
@@ -162,12 +162,12 @@ float const FOOD_COLLISION_INTERVAL = .05;
     }
 }
 
-- (int)getScoreFromModel
+- (NSInteger)getScoreFromModel
 {
     return self.gameModel.playerScore;
 }
 
-- (int)getLifeFromModel
+- (NSInteger)getLifeFromModel
 {
     return self.gameModel.playerLife;
 }

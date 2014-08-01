@@ -9,9 +9,12 @@
 #import <Foundation/Foundation.h>
 
 @interface GameModel : NSObject
-@property (nonatomic) int playerScore;
-@property (nonatomic) int playerLife;
--(id)initWithScore:(NSInteger)score life:(NSInteger)life;
--(void)setScore:(NSInteger)score;
--(void)setLife:(NSInteger)life;
+
+@property (nonatomic) NSInteger playerScore;
+@property (nonatomic) NSInteger playerLife;
+
+- (id)initWithScore:(NSInteger)score life:(NSInteger)life;
+- (void)setScore:(NSInteger)score;
+- (void)setLife:(NSInteger)life;
+
 @end

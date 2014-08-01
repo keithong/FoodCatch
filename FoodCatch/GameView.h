@@ -19,22 +19,22 @@
 @property (retain, nonatomic) UILabel *scoreLabel;
 @property (retain, nonatomic) UILabel *lifeLabel;
 
-@property (nonatomic) int screenHeight;
-@property (nonatomic) int screenWidth;
-@property (nonatomic) int screenHalf;
+@property (nonatomic) NSInteger screenHeight;
+@property (nonatomic) NSInteger screenWidth;
+@property (nonatomic) NSInteger screenHalf;
 
-@property (nonatomic) int basketHeight;
-@property (nonatomic) int basketWidth;
-@property (nonatomic) float basketOriginalXPosition;
-@property (nonatomic) float basketYPosition;
+@property (nonatomic) NSInteger basketHeight;
+@property (nonatomic) NSInteger basketWidth;
+@property (nonatomic) CGFloat basketOriginalXPosition;
+@property (nonatomic) CGFloat basketYPosition;
 
-@property (nonatomic) int foodRandomPosition;
+@property (nonatomic) NSInteger foodRandomPosition;
 
-@property (nonatomic) int floorWidth;
-@property (nonatomic) int floorYPosition;
+@property (nonatomic) NSInteger floorWidth;
+@property (nonatomic) NSInteger floorYPosition;
 
-@property (nonatomic) int labelHeight;
-@property (nonatomic) int labelWidth;
+@property (nonatomic) NSInteger labelHeight;
+@property (nonatomic) NSInteger labelWidth;
 
 - (void)createBasket;
 - (void)createFood;
