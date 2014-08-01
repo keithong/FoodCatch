@@ -19,6 +19,7 @@
 		F0522B74198A2694009E0A26 /* JsonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F0522B72198A2694009E0A26 /* JsonCell.m */; };
 		F0522B75198A2694009E0A26 /* JsonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0522B73198A2694009E0A26 /* JsonCell.xib */; };
 		F087FC0919826D8800B5054B /* GameModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F087FC0819826D8800B5054B /* GameModel.m */; };
+		F0B745DD198B700800FF68CF /* JsonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EDA4551989DCF700B2AB91 /* JsonViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F0C923CA197E407500CCC3CA /* GameOverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0C923C8197E407500CCC3CA /* GameOverViewController.m */; };
 		F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F0C923C9197E407500CCC3CA /* GameOverViewController.xib */; };
 		F0D47FAB197780AA00BDD80C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F0D47FAA197780AA00BDD80C /* Foundation.framework */; };
@@ -37,6 +38,8 @@
 		F0DD924C197E5D7C00CC1652 /* ScoreModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0DD924B197E5D7C00CC1652 /* ScoreModel.m */; };
 		F0EDA4561989DCF700B2AB91 /* JsonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EDA4551989DCF700B2AB91 /* JsonViewController.m */; };
 		F0EDA459198A03E000B2AB91 /* JsonModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F0EDA458198A03E000B2AB91 /* JsonModel.m */; };
+		F0F96F2F198B681A00106AFC /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F0F96F2C198B681A00106AFC /* SVProgressHUD.bundle */; };
+		F0F96F30198B681A00106AFC /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = F0F96F2E198B681A00106AFC /* SVProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +99,10 @@
 		F0EDA4551989DCF700B2AB91 /* JsonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonViewController.m; sourceTree = "<group>"; };
 		F0EDA457198A03E000B2AB91 /* JsonModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JsonModel.h; sourceTree = "<group>"; };
 		F0EDA458198A03E000B2AB91 /* JsonModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JsonModel.m; sourceTree = "<group>"; };
+		F0F96F2B198B681A00106AFC /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		F0F96F2C198B681A00106AFC /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		F0F96F2D198B681A00106AFC /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		F0F96F2E198B681A00106AFC /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +162,7 @@
 		F0D47FB0197780AA00BDD80C /* FoodCatch */ = {
 			isa = PBXGroup;
 			children = (
+				F0F96F2A198B681A00106AFC /* SVProgressHUD */,
 				F04A7649197784B000BD7058 /* AboutViewController.h */,
 				F04A764A197784B000BD7058 /* AboutViewController.m */,
 				F04A764B197784B000BD7058 /* AboutViewController.xib */,
@@ -220,6 +228,18 @@
 				F0D47FCC197780AB00BDD80C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F0F96F2A198B681A00106AFC /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				F0F96F2B198B681A00106AFC /* SVProgressHUD-Prefix.pch */,
+				F0F96F2C198B681A00106AFC /* SVProgressHUD.bundle */,
+				F0F96F2D198B681A00106AFC /* SVProgressHUD.h */,
+				F0F96F2E198B681A00106AFC /* SVProgressHUD.m */,
+			);
+			name = SVProgressHUD;
+			path = ../SVProgressHUD;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F024B49A197F50A5001C9FD9 /* ScoreCell.xib in Resources */,
+				F0F96F2F198B681A00106AFC /* SVProgressHUD.bundle in Resources */,
 				F0C923CB197E407500CCC3CA /* GameOverViewController.xib in Resources */,
 				F04A76451977841B00BD7058 /* MainMenuViewController.xib in Resources */,
 				F0D47FB5197780AA00BDD80C /* InfoPlist.strings in Resources */,
@@ -325,6 +346,7 @@
 			files = (
 				F04A76441977841B00BD7058 /* MainMenuViewController.m in Sources */,
 				F04A764C197784B000BD7058 /* AboutViewController.m in Sources */,
+				F0F96F30198B681A00106AFC /* SVProgressHUD.m in Sources */,
 				F0D47FBB197780AA00BDD80C /* AppDelegate.m in Sources */,
 				F024B495197F440C001C9FD9 /* HighScoresViewController.m in Sources */,
 				F024B498197F5062001C9FD9 /* ScoreCell.m in Sources */,
@@ -344,6 +366,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F0B745DD198B700800FF68CF /* JsonViewController.m in Sources */,
 				F0D47FD0197780AB00BDD80C /* FoodCatchTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

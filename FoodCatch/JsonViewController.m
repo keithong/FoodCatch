@@ -9,6 +9,7 @@
 #import "JsonViewController.h"
 #import "JsonModel.h"
 #import "JsonCell.h"
+#import "SVProgressHUD.h"
 
 @interface JsonViewController()
 
@@ -128,6 +129,7 @@
 
 - (void)fetchJson
 {
+    [SVProgressHUD show];
     NSString *requestString = @"https://itunes.apple.com/ph/rss/topfreeapplications/limit=50/json";
     NSURL *url = [NSURL URLWithString:requestString];
     
@@ -155,7 +157,11 @@
             [self.appDictionary setValue:self.appArtist forKey:@"appArtist"];
             [self.fixedEntry addObject:self.appDictionary];
         }
-        dispatch_async(dispatch_get_main_queue(), ^{[self.tableView reloadData];});
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [SVProgressHUD dismiss];
+            [self.tableView reloadData];
+        
+        });
     }];
     [dataTask resume];
 }
