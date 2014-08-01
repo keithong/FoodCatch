@@ -13,6 +13,7 @@
 @interface JsonViewController()
 
 @property (retain, nonatomic) NSURLSession *session;
+
 @property (retain, nonatomic) NSMutableDictionary *appDictionary;
 @property (retain, nonatomic) NSDictionary *jsonObject;
 @property (retain, nonatomic) NSDictionary *feed;
@@ -139,7 +140,7 @@
         
         self.fixedEntry = [NSMutableArray array];
         
-        // The JSON array has many dictionary inside it
+        // The JSON array has many dictionaries inside it
         // Search the whole JSON array for the app name and app artist
         for (NSDictionary *dict in self.entry){
             self.appDictionary = [NSMutableDictionary dictionary];

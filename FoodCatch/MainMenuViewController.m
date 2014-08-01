@@ -21,6 +21,8 @@
 
 @end
 
+#pragma mark - Main Menu Button Actions
+
 @implementation MainMenuViewController
 - (IBAction)goToJson:(id)sender {
     JsonViewController *jsonVC = [[JsonViewController alloc] init];
@@ -28,8 +30,6 @@
     [jsonVC release];
     jsonVC = nil;
 }
-
-#pragma mark - Main Menu Button Actions
 
 - (IBAction)goToHighScore:(id)sender {
     HighScoresViewController *highScoreVC = [[HighScoresViewController alloc]init];
