@@ -29,8 +29,7 @@
 {
     [super viewDidLoad];
     [self connectToAds];
-    [self webViewDidStartLoad:self.aboutWebView];
-    [self webViewDidFinishLoad:self.aboutWebView];  
+    self.aboutWebView.delegate = self;
 }
 
 - (void)viewWillAppear:(BOOL)animated
