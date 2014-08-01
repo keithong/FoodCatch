@@ -30,10 +30,7 @@
     [super viewDidLoad];
     [self connectToAds];
     [self webViewDidStartLoad:self.aboutWebView];
-    [self webViewDidFinishLoad:self.aboutWebView];
-
-//    [self showProgressHUD];
-    
+    [self webViewDidFinishLoad:self.aboutWebView];  
 }
 
 - (void)viewWillAppear:(BOOL)animated
