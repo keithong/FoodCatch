@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface AboutViewController : UIViewController <UIAlertViewDelegate>
+@interface AboutViewController : UIViewController <UIAlertViewDelegate, UIWebViewDelegate>
 @end

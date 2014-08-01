@@ -28,8 +28,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    [self showProgressHUD];
+    [self connectToAds];
+    [self webViewDidStartLoad:self.aboutWebView];
+    [self webViewDidFinishLoad:self.aboutWebView];
+
+//    [self showProgressHUD];
     
 }
 
@@ -42,17 +45,6 @@
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
-}
-
-- (void)showProgressHUD
-{
-    [SVProgressHUD show];
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        [self connectToAds];
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [SVProgressHUD dismiss];
-        });
-    });
 }
 
 - (void)connectToAds
@@ -94,6 +86,16 @@
     {
         [self.navigationController popToRootViewControllerAnimated:YES];
     }
+}
+
+- (void)webViewDidStartLoad:(UIWebView *)webView
+{
+    [SVProgressHUD show];
+}
+
+- (void)webViewDidFinishLoad:(UIWebView *)webView
+{
+    [SVProgressHUD dismiss];
 }
 
 - (void)dealloc
